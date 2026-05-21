@@ -1,7 +1,19 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+    <!-- Dark application theme. -->
     <style name="Base.Theme.SunMoonResort" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <!-- Primary brand color (lighter gold for dark mode) -->
+        <item name="colorPrimary">#DAA520</item>
+        <!-- Secondary brand color -->
+        <item name="colorSecondary">@color/resort_gold</item>
+        <!-- Tertiary color -->
+        <item name="colorTertiary">#2C2C2C</item>
+        <!-- Error color -->
+        <item name="colorError">@color/red_error</item>
+        <!-- Surface colors for dark mode -->
+        <item name="colorSurface">#121212</item>
+        <item name="colorSurfaceVariant">#2C2C2C</item>
+        <!-- Text colors for dark mode -->
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/background_off_white</item>
     </style>
 </resources>

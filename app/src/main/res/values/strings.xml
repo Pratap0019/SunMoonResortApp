@@ -1,3 +1,150 @@
 <resources>
     <string name="app_name">SunMoon Resort</string>
-</resources>
+
+    <!-- Header & Navigation -->
+    <string name="admin">Admin</string>
+    <string name="logo_description">SunMoon Resort Logo</string>
+    <string name="decoration_header">Header Decoration</string>
+
+    <!-- Welcome Section -->
+    <string name="resort_logo_desc">SunMoon Resort Main Logo</string>
+    <string name="welcome_title">Welcome to SunMoon Resort</string>
+    <string name="welcome_description">Experience luxury and comfort at SunMoon Resort, where world-class amenities meet personalized service. Nestled in a prime location with stunning sea views, our hotel offers the perfect retreat for business travelers and vacation seekers alike. From elegantly appointed rooms to exceptional dining, we are committed to making your stay unforgettable.</string>
+    <string name="owner_credit">(A property of Mr. Bhanu Pratap)</string>
+    <string name="owner_desc">Mr. Bhanu Pratap - Owner</string>
+
+    <!-- Carousel -->
+    <string name="carousel_slide">Hotel Carousel Slide</string>
+    <string name="book_now">Book Now</string>
+
+    <!-- Room Availability -->
+    <string name="room_availability_overview">Room Availability Overview</string>
+    <string name="room_type">Room Type</string>
+    <string name="base_rate">Base Rate / Night</string>
+    <string name="balcony">Balcony</string>
+    <string name="nature_view">Nature\'s View</string>
+    <string name="wifi">WiFi</string>
+    <string name="mini_fridge">Mini-Fridge</string>
+    <string name="available_rooms">Available Rooms</string>
+
+    <!-- Pricing Information -->
+    <string name="pricing_information">Pricing Information</string>
+    <string name="room_rates">Room Rates</string>
+    <string name="extras">Extras</string>
+    <string name="pet_fees">Pet Fees</string>
+
+    <!-- Search Booking -->
+    <string name="search_your_booking">Search Your Booking</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="ten_digit_mobile">10-digit mobile number</string>
+    <string name="search_booking">Search Booking</string>
+
+    <!-- Booking Results -->
+    <string name="booking_id">Booking ID</string>
+    <string name="room_no">Room No</string>
+    <string name="check_in">Check In</string>
+    <string name="check_out">Check Out</string>
+    <string name="status">Status</string>
+    <string name="total_amount">Total (₹)</string>
+    <string name="action">Action</string>
+    <string name="cancel">Cancel</string>
+
+    <!-- CTA Buttons -->
+    <string name="book_stay_now">Book Stay Now</string>
+    <string name="book_your_stay">Book Your Stay</string>
+    <string name="view_rooms">View Rooms</string>
+    <string name="explore_amenities">Explore Amenities</string>
+
+    <!-- Footer -->
+    <string name="contact_us">Contact Us</string>
+    <string name="phone_label">Phone:</string>
+    <string name="phone_number">+91 (879) 703-3665</string>
+    <string name="email_label">Email Support:</string>
+    <string name="email_contact">bhanuofficial019@gmail.com</string>
+    <string name="email_reservations">booking@sunmoonresort.com</string>
+
+    <string name="visit_us">Visit Us</string>
+    <string name="main_resort">Main Resort</string>
+    <string name="resort_location">Coastal Paradise Zone, Beachfront Avenue 123, Coastal City</string>
+    <string name="hours">Hours: 24/7 Guest Services</string>
+
+    <string name="our_services">Our Services</string>
+    <string name="luxury_rooms">Luxury Rooms &amp; Suites</string>
+    <string name="sea_view">Sea View &amp; Balcony Options</string>
+    <string name="wifi_amenities">WiFi &amp; Premium Amenities</string>
+    <string name="room_service">24/7 Room Service</string>
+    <string name="concierge">Concierge &amp; Travel Services</string>
+    <string name="pet_friendly">Pet-Friendly Accommodations</string>
+
+    <string name="quick_links">Quick Links</string>
+    <string name="home">Home</string>
+    <string name="book_room">Book a Room</string>
+    <string name="get_help">Get Help</string>
+    <string name="send_feedback">Send Feedback</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="terms_conditions">Terms &amp; Conditions</string>
+
+    <string name="footer_copyright">&#169; 2024 SunMoon Resorts. All rights reserved. | Owned &amp; Operated by Mr. Bhanu Pratap</string>
+    <string name="footer_tagline">Crafting Memories, Creating Comfort | Excellence in Hospitality</string>
+
+    <!-- Status Badges -->
+    <string name="status_confirmed">Confirmed</string>
+    <string name="status_staying">Staying</string>
+    <string name="status_checked_out">Checked Out</string>
+    <string name="status_cancelled">Cancelled</string>
+
+    <!-- Booking Status -->
+    <string name="confirmed">Confirmed</string>
+    <string name="checked_in">Checked In</string>
+    <string name="checked_out">Checked Out</string>
+    <string name="cancelled">Cancelled</string>
+
+    <!-- Booking Page -->
+    <string name="check_in_date">Check-in Date</string>
+    <string name="check_out_date">Check-out Date</string>
+    <string name="select_date">Select Date</string>
+    <string name="check_in_error">Check-in date cannot be in the past</string>
+    <string name="check_out_error">Check-out date must be after check-in date</string>
+    <string name="days_stayed">Days Stayed</string>
+    <string name="check_availability">Check Availability</string>
+    <string name="select_room_type_first">First check date availability</string>
+    <string name="select_dates_first">Select check-in and check-out dates first, then choose room type</string>
+    <string name="calculate_price">Calculate Price</string>
+    <string name="pet_weight_kg">Pet Weight (kg)</string>
+    <string name="optional">Optional</string>
+    <string name="price_breakdown">Price Breakdown</string>
+    <string name="assigned_room">Assigned Room</string>
+    <string name="room_labeled">Room</string>
+    <string name="type_labeled">Type</string>
+    <string name="guest_details">Guest Details</string>
+    <string name="guest_full_name">Guest full name</string>
+    <string name="name_error">Name can only contain letters (A–Z) and spaces</string>
+    <string name="mobile_error">Please enter a valid 10-digit mobile number</string>
+    <string name="confirm_booking">Confirm Booking</string>
+    <string name="booking_confirmed">Booking Confirmed!</string>
+    <string name="spa_sessions">Spa Sessions</string>
+    <string name="error">Error</string>
+
+    <!-- Admin Panel Strings -->
+    <string name="bookings_information">Bookings Information</string>
+    <string name="admin_access_only">(Admin access only)</string>
+    <string name="new_booking">New Booking</string>
+    <string name="logout">Logout</string>
+    <string name="serving_guests">Serving Guests</string>
+    <string name="full_room_inventory">Full Room Inventory</string>
+    <string name="no_bookings_yet">No bookings yet</string>
+     <string name="view_bill">View Bill</string>
+
+     <!-- Admin Login Strings -->
+     <string name="admin_login_title">Admin Access</string>
+     <string name="admin_login_subtitle">Enter your password to access the admin panel</string>
+     <string name="password">Password</string>
+     <string name="password_hint">Enter admin password</string>
+     <string name="password_required">Password is required</string>
+     <string name="password_too_short">Password must be at least 6 characters</string>
+     <string name="invalid_password">Invalid password. Please try again.</string>
+     <string name="login">Login</string>
+     <string name="logging_in">Logging in...</string>
+     <string name="login_success">Login successful!</string>
+     <string name="back">Back</string>
+ </resources>

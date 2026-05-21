@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_off_white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header with Logo, Decorative Image, and Admin Button -->
+        <FrameLayout
+            android:id="@+id/header_container"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@drawable/header_bg">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp">
+
+                <!-- Left: Logo -->
+                <ImageView
+                    android:id="@+id/logo_header"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/sunmoon_logo"
+                    android:contentDescription="@string/logo_description"
+                    android:scaleType="centerInside" />
+
+                <!-- Center: Decorative Image -->
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/header_decoration"
+                    android:contentDescription="@string/decoration_header"
+                    android:scaleType="centerCrop" />
+
+                <!-- Right: Admin Button -->
+                <Button
+                    android:id="@+id/admin_btn"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:text="@string/admin"
+                    android:textSize="9sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/resort_gold"
+                    android:background="@color/white"
+                    android:textAllCaps="true"
+                    android:letterSpacing="0.1"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <!-- Welcome Section with Logo & Description -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:paddingTop="24dp"
+            android:paddingBottom="24dp">
+
+            <!-- Resort Logo -->
+            <ImageView
+                android:id="@+id/resort_logo"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/sunmoon_resort_logo"
+                android:contentDescription="@string/resort_logo_desc"
+                android:scaleType="centerInside"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp" />
+
+            <!-- Hotel Description Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/welcome_title"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/resort_gold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/welcome_description"
+                        android:textSize="14sp"
+                        android:textColor="@color/text_dark"
+                        android:lineSpacingMultiplier="1.4"
+                        android:gravity="center"
+                        android:layout_marginTop="12dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/owner_credit"
+                        android:textSize="12sp"
+                        android:textColor="@color/text_dark"
+                        android:layout_marginTop="12dp" />
+
+                    <!-- Owner Image -->
+                    <ImageView
+                        android:id="@+id/owner_image"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:src="@drawable/owner_photo"
+                        android:contentDescription="@string/owner_desc"
+                        android:scaleType="centerCrop"
+                        android:layout_marginTop="16dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <!-- Carousel Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="24dp">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/carousel_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="300dp" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/carousel_indicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabIndicatorColor="@color/resort_gold"
+                app:tabGravity="center" />
+        </LinearLayout>
+
+        <!-- Info Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp">
+
+            <!-- Room Availability Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Card Header -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:background="@color/text_dark"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/room_availability_overview"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+
+                    <!-- Room Availability RecyclerView -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/room_availability_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"
+                        tools:listitem="@layout/item_room_availability" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Pricing Information Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@color/white"
+                android:layout_marginTop="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Card Header -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:background="@color/text_dark"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/pricing_information"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+
+                    <!-- Pricing Content -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
+
+                        <!-- Room Rates Column -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/room_rates"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/resort_gold"
+                                android:layout_marginBottom="8dp" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/room_rates_list"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:nestedScrollingEnabled="false"
+                                tools:listitem="@layout/item_price_row" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/gray_light"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginEnd="12dp" />
+
+                        <!-- Extras Column -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:paddingStart="12dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/extras"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/resort_gold"
+                                android:layout_marginBottom="8dp" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/extras_list"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:nestedScrollingEnabled="false"
+                                tools:listitem="@layout/item_price_row" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/gray_light"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginEnd="12dp" />
+
+                        <!-- Pet Fees Column -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:paddingStart="12dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/pet_fees"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/resort_gold"
+                                android:layout_marginBottom="8dp" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/pet_fees_list"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:nestedScrollingEnabled="false"
+                                tools:listitem="@layout/item_price_row" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Search Booking Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@color/white"
+                android:layout_marginTop="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Card Header -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:background="@color/text_dark"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/search_your_booking"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+
+                    <!-- Search Form -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/mobile_number"
+                            android:textSize="14sp"
+                            android:textColor="@color/text_dark"
+                            android:layout_marginBottom="8dp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:background="@drawable/edit_text_background"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:layout_marginBottom="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="+91"
+                                android:textSize="14sp"
+                                android:textColor="@color/text_dark"
+                                android:textStyle="bold"
+                                android:layout_marginEnd="8dp" />
+
+                            <EditText
+                                android:id="@+id/mobile_search_input"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:inputType="phone"
+                                android:maxLength="10"
+                                android:hint="@string/ten_digit_mobile"
+                                android:background="@null"
+                                android:textSize="14sp"
+                                android:textColor="@color/text_dark"
+                                android:textColorHint="@color/gray_light" />
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/search_booking_btn"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:text="@string/search_booking"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:background="@color/resort_gold"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+
+                    <!-- Search Results -->
+                    <LinearLayout
+                        android:id="@+id/search_results_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:paddingBottom="16dp"
+                        android:visibility="gone">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/search_results_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:nestedScrollingEnabled="false"
+                            android:layout_marginTop="16dp"
+                            tools:listitem="@layout/item_booking_result" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <!-- Call to Action Button -->
+        <Button
+            android:id="@+id/book_stay_cta"
+            android:layout_width="200dp"
+            android:layout_height="48dp"
+            android:text="@string/book_stay_now"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:background="@color/resort_gold"
+            android:textColor="@color/white"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            app:cornerRadius="8dp"
+            android:elevation="4dp" />
+
+        <!-- Footer -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/background_off_white"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="32dp"
+            android:paddingBottom="32dp"
+            android:layout_marginTop="32dp"
+            android:borderTopColor="@color/resort_gold"
+            android:borderTop="2dp">
+
+            <!-- Contact Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contact_us"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/resort_gold"
+                    android:layout_marginBottom="12dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/phone_label"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_dark" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/phone_number"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_brown"
+                    android:layout_marginBottom="12dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/email_label"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_dark" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/email_contact"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_brown" />
+            </LinearLayout>
+
+            <!-- Services Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/our_services"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/resort_gold"
+                    android:layout_marginBottom="12dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="✓ @string/luxury_rooms"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_brown" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="✓ @string/sea_view"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_brown" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="✓ @string/wifi_amenities"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_brown" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="✓ @string/room_service"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_brown" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="✓ @string/pet_friendly"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_brown" />
+            </LinearLayout>
+
+            <!-- Footer Bottom -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:paddingTop="16dp"
+                android:borderTopColor="@color/resort_gold"
+                android:borderTop="1dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/footer_copyright"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_brown"
+                    android:gravity="center"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/footer_tagline"
+                    android:textSize="11sp"
+                    android:textColor="@color/text_brown"
+                    android:gravity="center" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
+

@@ -2,4 +2,38 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Resort Brand Colors -->
+    <color name="resort_gold">#B8860B</color>
+    <color name="resort_gold_dark">#8b5a05</color>
+    <color name="background_off_white">#FAF9F3</color>
+
+    <!-- Text Colors -->
+    <color name="text_dark">#5b3a21</color>
+    <color name="text_brown">#8b6914</color>
+    <color name="text_light">#999999</color>
+
+    <!-- UI Colors -->
+    <color name="gray_light">#EEEEEE</color>
+    <color name="gray_medium">#CCCCCC</color>
+    <color name="red_error">#dc3545</color>
+    <color name="green_success">#198754</color>
+    <color name="blue_info">#0d6efd</color>
+    <color name="yellow_warning">#ffc107</color>
+
+    <!-- Status Badge Colors -->
+    <color name="status_confirmed">#0d6efd</color>
+    <color name="status_staying">#ffc107</color>
+    <color name="status_checked_out">#198754</color>
+    <color name="status_cancelled">#dc3545</color>
+
+    <!-- Badge Colors -->
+    <color name="badge_available">#B8860B</color>
+    <color name="badge_booked">#C0C0C0</color>
+
+    <!-- Booking Page Colors -->
+    <color name="gray_booking_bg">#DCDCDC</color>
+    <color name="cream_bg">#FDF6E3</color>
+    <color name="red_light">#FFE5E5</color>
+    <color name="green_light">#E8F5E9</color>
 </resources>
