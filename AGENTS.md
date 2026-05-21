@@ -11,19 +11,28 @@
 
 ## Architecture Overview
 
-### Single Activity Pattern
-- **`MainActivity.kt`**: Only activity in the app, extends `AppCompatActivity`
+### Single Activity + Layered Package Pattern
+- **`MainActivity.kt`**: Current launcher activity, extends `AppCompatActivity`
 - Entry point uses `enableEdgeToEdge()` for modern full-screen display
+- Core package folders prepared for growth:
+  - **`ui/`**: UI screens, adapters, view-related classes
+  - **`data/`**: Repositories, data sources, mappers
+  - **`model/`**: Domain/data models used across layers
 - Layout: `activity_main.xml` - ConstraintLayout with centered TextView
 
 ```
 app/src/main/
-├── java/com/example/sunmoonresort/MainActivity.kt
+├── java/com/example/sunmoonresort/
+│   ├── MainActivity.kt
+│   ├── ui/
+│   ├── data/
+│   └── model/
 ├── res/layout/activity_main.xml (ConstraintLayout root)
+├── res/values/ (strings, colors, themes)
 └── AndroidManifest.xml (MainActivity is LAUNCHER)
 ```
 
-**Why**: Monolithic single-activity foundation designed for future feature expansion.
+**Why**: Keep the app simple with one activity while establishing clear package boundaries for future features.
 
 ## Dependency Management
 
@@ -92,6 +101,9 @@ plugins {
 | `app/build.gradle` | Module build config, dependencies reference libs catalogue |
 | `app/src/main/AndroidManifest.xml` | App permissions, activities, configurations |
 | `app/src/main/java/com/example/sunmoonresort/` | Kotlin source code |
+| `app/src/main/java/com/example/sunmoonresort/ui/` | UI layer classes (screens, presentation helpers) |
+| `app/src/main/java/com/example/sunmoonresort/data/` | Data layer classes (repositories, sources) |
+| `app/src/main/java/com/example/sunmoonresort/model/` | Model classes shared across app layers |
 | `app/src/main/res/` | Layouts, strings, colors, drawables, themes |
 | `proguard-rules.pro` | Obfuscation rules (currently unused - minifyEnabled false) |
 
@@ -116,6 +128,11 @@ plugins {
    - Always use resource references (`@string/name`, `@color/name`) not hardcoded values
    - Supports easy localization and testing
 
+5. **Add New Classes by Layer**:
+   - Place UI-related classes in `app/src/main/java/com/example/sunmoonresort/ui/`
+   - Place repository/data source classes in `app/src/main/java/com/example/sunmoonresort/data/`
+   - Place shared entities/models in `app/src/main/java/com/example/sunmoonresort/model/`
+
 ## Repository Structure
 
 ```
@@ -125,7 +142,15 @@ SunMoonResort/
 │   ├── build.gradle              ← Module config
 │   ├── proguard-rules.pro         ← Obfuscation (if minifyEnabled true)
 │   └── src/
-│       ├── main/                  ← Production code
+│       ├── main/
+│       │   ├── java/com/example/sunmoonresort/
+│       │   │   ├── MainActivity.kt
+│       │   │   ├── ui/
+│       │   │   ├── data/
+│       │   │   └── model/
+│       │   └── res/
+│       │       ├── layout/
+│       │       └── values/
 │       ├── test/                  ← Unit tests (JUnit)
 │       └── androidTest/           ← Instrumented tests (Espresso)
 └── gradle.properties              ← JVM args, Kotlin style
