@@ -123,6 +123,10 @@
     <string name="confirm_booking">Confirm Booking</string>
     <string name="booking_confirmed">Booking Confirmed!</string>
     <string name="spa_sessions">Spa Sessions</string>
+    <string name="extra_mattress_label">Extra Mattress (Rs 500/day)</string>
+    <string name="extra_spa_label">SPA</string>
+    <string name="extra_gym_label">Gym Access (Rs 500/day)</string>
+    <string name="extra_pool_label">Pool Access (Rs 500/day)</string>
     <string name="error">Error</string>
 
     <!-- Admin Panel Strings -->

@@ -44,9 +44,9 @@
                     android:src="@drawable/header_decoration" />
 
                 <Button
-                    android:id="@+id/admin_btn"
+                    android:id="@+id/back_btn"
                     style="@style/Widget.SunMoonResort.HeaderNavButton"
-                    android:text="@string/admin"
+                    android:text="@string/back"
                     android:textAllCaps="true" />
             </LinearLayout>
         </FrameLayout>
@@ -118,14 +118,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="20dp">
+                    android:padding="16dp">
 
                     <!-- Check-in & Check-out Row -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginBottom="16dp">
+                        android:layout_marginBottom="12dp">
 
                         <!-- Check-in Date -->
                         <LinearLayout
@@ -142,7 +142,7 @@
                                 android:textSize="12sp"
                                 android:textStyle="bold"
                                 android:textColor="@color/text_dark"
-                                android:layout_marginBottom="6dp" />
+                                android:layout_marginBottom="4dp" />
 
                             <com.google.android.material.textfield.TextInputLayout
                                 android:layout_width="match_parent"
@@ -155,10 +155,11 @@
                                 <com.google.android.material.textfield.TextInputEditText
                                     android:id="@+id/check_in_date"
                                     android:layout_width="match_parent"
-                                    android:layout_height="48dp"
+                                    android:layout_height="wrap_content"
+                                    android:minHeight="48dp"
                                     android:hint="@string/select_date"
                                     android:inputType="date"
-                                    android:textSize="14sp"
+                                    android:textSize="13sp"
                                     android:textColor="@color/text_dark"
                                     android:textColorHint="@color/text_light"
                                     android:focusable="false"
@@ -172,7 +173,7 @@
                                 android:text="@string/check_in_error"
                                 android:textSize="11sp"
                                 android:textColor="@color/red_error"
-                                android:layout_marginTop="4dp"
+                                android:layout_marginTop="2dp"
                                 android:visibility="gone" />
                         </LinearLayout>
 
@@ -191,7 +192,7 @@
                                 android:textSize="12sp"
                                 android:textStyle="bold"
                                 android:textColor="@color/text_dark"
-                                android:layout_marginBottom="6dp" />
+                                android:layout_marginBottom="4dp" />
 
                             <com.google.android.material.textfield.TextInputLayout
                                 android:layout_width="match_parent"
@@ -204,10 +205,11 @@
                                 <com.google.android.material.textfield.TextInputEditText
                                     android:id="@+id/check_out_date"
                                     android:layout_width="match_parent"
-                                    android:layout_height="48dp"
+                                    android:layout_height="wrap_content"
+                                    android:minHeight="48dp"
                                     android:hint="@string/select_date"
                                     android:inputType="date"
-                                    android:textSize="14sp"
+                                    android:textSize="13sp"
                                     android:textColor="@color/text_dark"
                                     android:textColorHint="@color/text_light"
                                     android:focusable="false"
@@ -221,7 +223,7 @@
                                 android:text="@string/check_out_error"
                                 android:textSize="11sp"
                                 android:textColor="@color/red_error"
-                                android:layout_marginTop="4dp"
+                                android:layout_marginTop="2dp"
                                 android:visibility="gone" />
                         </LinearLayout>
                     </LinearLayout>
@@ -231,15 +233,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:layout_marginBottom="16dp">
+                        android:gravity="bottom"
+                        android:layout_marginBottom="12dp"
+                        android:baselineAligned="false">
 
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:orientation="vertical"
-                            android:layout_marginEnd="12dp">
+                            android:layout_marginEnd="8dp">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -248,7 +251,7 @@
                                 android:textSize="12sp"
                                 android:textStyle="bold"
                                 android:textColor="@color/text_dark"
-                                android:layout_marginBottom="6dp" />
+                                android:layout_marginBottom="4dp" />
 
                             <com.google.android.material.textfield.TextInputLayout
                                 android:layout_width="match_parent"
@@ -261,9 +264,10 @@
                                 <com.google.android.material.textfield.TextInputEditText
                                     android:id="@+id/days_stayed"
                                     android:layout_width="match_parent"
-                                    android:layout_height="48dp"
+                                    android:layout_height="wrap_content"
+                                    android:minHeight="48dp"
                                     android:inputType="number"
-                                    android:textSize="14sp"
+                                    android:textSize="13sp"
                                     android:textColor="@color/text_dark"
                                     android:textColorHint="@color/text_light"
                                     android:enabled="false" />
@@ -273,14 +277,15 @@
                         <Button
                             android:id="@+id/check_availability_btn"
                             android:layout_width="wrap_content"
-                            android:layout_height="48dp"
+                            android:layout_height="44dp"
+                            android:layout_gravity="bottom"
                             android:text="@string/check_availability"
-                            android:textSize="12sp"
+                            android:textSize="13sp"
                             android:textStyle="bold"
-                            android:background="@color/resort_gold"
+                            android:background="@drawable/bg_primary_action_button"
                             android:textColor="@color/white"
-                            android:paddingStart="24dp"
-                            android:paddingEnd="24dp" />
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp" />
                     </LinearLayout>
 
                     <!-- Room Type Selection -->
@@ -288,7 +293,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_marginBottom="16dp">
+                        android:layout_marginBottom="12dp">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -297,7 +302,7 @@
                             android:textSize="12sp"
                             android:textStyle="bold"
                             android:textColor="@color/text_dark"
-                            android:layout_marginBottom="6dp" />
+                            android:layout_marginBottom="4dp" />
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
@@ -311,10 +316,11 @@
                             <AutoCompleteTextView
                                 android:id="@+id/room_type_spinner"
                                 android:layout_width="match_parent"
-                                android:layout_height="48dp"
+                                android:layout_height="wrap_content"
+                                android:minHeight="48dp"
                                 android:hint="@string/select_room_type_first"
                                 android:inputType="none"
-                                android:textSize="14sp"
+                                android:textSize="13sp"
                                 android:textColor="@color/text_dark"
                                 android:textColorHint="@color/text_light"
                                 android:enabled="false" />
@@ -324,9 +330,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/select_dates_first"
-                            android:textSize="11sp"
+                            android:textSize="10sp"
                             android:textColor="@color/gray_light"
-                            android:layout_marginTop="4dp" />
+                            android:layout_marginTop="2dp" />
                     </LinearLayout>
 
                     <!-- Extras Section -->
@@ -343,31 +349,98 @@
                             android:textSize="12sp"
                             android:textStyle="bold"
                             android:textColor="@color/text_dark"
-                            android:layout_marginBottom="8dp" />
+                            android:layout_marginBottom="6dp" />
 
                         <LinearLayout
-                            android:id="@+id/extras_container"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical" />
+                            android:orientation="vertical">
 
-                        <!-- SPA Sessions Picker (conditionally shown) -->
-                        <LinearLayout
-                            android:id="@+id/spa_sessions_container"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_marginTop="12dp"
-                            android:visibility="gone">
-
-                            <TextView
+                            <RadioButton
+                                android:id="@+id/extra_mattress_radio"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/spa_sessions"
-                                android:textSize="12sp"
-                                android:textStyle="bold"
+                                android:layout_height="36dp"
+                                android:text="@string/extra_mattress_label"
                                 android:textColor="@color/text_dark"
-                                android:layout_marginBottom="6dp" />
+                                android:textSize="12sp"
+                                android:layout_marginBottom="2dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical"
+                                android:layout_marginBottom="2dp">
+
+                                <RadioButton
+                                    android:id="@+id/extra_spa_radio"
+                                    android:layout_width="0dp"
+                                    android:layout_height="36dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/extra_spa_label"
+                                    android:textColor="@color/text_dark"
+                                    android:textSize="12sp" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/spa_sessions_container"
+                                    android:layout_width="112dp"
+                                    android:layout_height="wrap_content"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                                    app:boxCornerRadiusBottomEnd="8dp"
+                                    app:boxCornerRadiusBottomStart="8dp"
+                                    app:boxCornerRadiusTopEnd="8dp"
+                                    app:boxCornerRadiusTopStart="8dp"
+                                    android:enabled="false"
+                                    android:alpha="0.6">
+
+                                    <AutoCompleteTextView
+                                        android:id="@+id/spa_sessions_spinner"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:minHeight="44dp"
+                                        android:hint="@string/spa_sessions"
+                                        android:inputType="none"
+                                        android:textSize="11sp"
+                                        android:textColor="@color/text_dark"
+                                        android:textColorHint="@color/text_light"
+                                        android:enabled="false" />
+                                </com.google.android.material.textfield.TextInputLayout>
+                            </LinearLayout>
+
+                            <RadioButton
+                                android:id="@+id/extra_gym_radio"
+                                android:layout_width="wrap_content"
+                                android:layout_height="36dp"
+                                android:text="@string/extra_gym_label"
+                                android:textColor="@color/text_dark"
+                                android:textSize="12sp"
+                                android:layout_marginBottom="2dp" />
+
+                            <RadioButton
+                                android:id="@+id/extra_pool_radio"
+                                android:layout_width="wrap_content"
+                                android:layout_height="36dp"
+                                android:text="@string/extra_pool_label"
+                                android:textColor="@color/text_dark"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Pet Weight -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/pet_weight_kg"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/text_dark"
+                            android:layout_marginBottom="4dp" />
 
                             <com.google.android.material.textfield.TextInputLayout
                                 android:layout_width="match_parent"
@@ -379,63 +452,30 @@
                                 app:boxCornerRadiusTopStart="8dp">
 
                                 <AutoCompleteTextView
-                                    android:id="@+id/spa_sessions_spinner"
+                                    android:id="@+id/pet_weight_spinner"
                                     android:layout_width="match_parent"
-                                    android:layout_height="48dp"
+                                    android:layout_height="wrap_content"
+                                    android:minHeight="48dp"
+                                    android:hint="@string/optional"
                                     android:inputType="none"
-                                    android:textSize="14sp"
+                                    android:textSize="13sp"
                                     android:textColor="@color/text_dark"
                                     android:textColorHint="@color/text_light" />
                             </com.google.android.material.textfield.TextInputLayout>
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <!-- Pet Weight -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginBottom="20dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/pet_weight_kg"
-                            android:textSize="12sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/text_dark"
-                            android:layout_marginBottom="6dp" />
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:boxCornerRadiusBottomEnd="8dp"
-                            app:boxCornerRadiusBottomStart="8dp"
-                            app:boxCornerRadiusTopEnd="8dp"
-                            app:boxCornerRadiusTopStart="8dp">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/pet_weight"
-                                android:layout_width="match_parent"
-                                android:layout_height="48dp"
-                                android:hint="@string/optional"
-                                android:inputType="numberDecimal"
-                                android:textSize="14sp"
-                                android:textColor="@color/text_dark"
-                                android:textColorHint="@color/text_light" />
-                        </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
 
                     <!-- Calculate Price Button -->
                     <Button
                         android:id="@+id/calculate_price_btn"
                         android:layout_width="match_parent"
-                        android:layout_height="48dp"
+                        android:layout_height="44dp"
                         android:text="@string/calculate_price"
-                        android:textSize="14sp"
+                        android:textSize="13sp"
                         android:textStyle="bold"
-                        android:background="@color/resort_gold"
+                        android:background="@drawable/bg_primary_action_button"
                         android:textColor="@color/white"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
                         android:enabled="false" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -455,17 +495,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="20dp">
+                    android:padding="16dp">
 
                     <TextView
                         style="@style/TextSunMoonResortHeading"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/price_breakdown"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@color/text_dark"
-                        android:layout_marginBottom="16dp" />
+                        android:layout_marginBottom="12dp" />
 
                     <!-- Assigned Room Info -->
                     <com.google.android.material.card.MaterialCardView
@@ -473,13 +513,13 @@
                         android:layout_height="wrap_content"
                         app:cardCornerRadius="8dp"
                         app:cardBackgroundColor="@color/cream_bg"
-                        android:layout_marginBottom="16dp">
+                        android:layout_marginBottom="12dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
-                            android:padding="12dp">
+                            android:padding="10dp">
 
                             <TextView
                                 style="@style/TextSunMoonResortHeading"
@@ -495,45 +535,45 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
                                 android:gravity="center_vertical"
-                                android:layout_marginTop="6dp">
+                                android:layout_marginTop="4dp">
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/room_labeled"
-                                    android:textSize="12sp"
+                                    android:textSize="11sp"
                                     android:textColor="@color/text_dark" />
 
                                 <TextView
                                     android:id="@+id/assigned_room_number"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textSize="12sp"
+                                    android:textSize="11sp"
                                     android:textStyle="bold"
                                     android:textColor="@color/text_dark"
                                     android:layout_marginStart="4dp"
-                                    android:layout_marginEnd="12dp" />
+                                    android:layout_marginEnd="8dp" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="|"
-                                    android:textSize="12sp"
+                                    android:textSize="11sp"
                                     android:textColor="@color/text_dark"
-                                    android:layout_marginEnd="12dp" />
+                                    android:layout_marginEnd="8dp" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/type_labeled"
-                                    android:textSize="12sp"
+                                    android:textSize="11sp"
                                     android:textColor="@color/text_dark" />
 
                                 <TextView
                                     android:id="@+id/assigned_room_type"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textSize="12sp"
+                                    android:textSize="11sp"
                                     android:textStyle="bold"
                                     android:textColor="@color/resort_gold"
                                     android:layout_marginStart="4dp" />
@@ -547,7 +587,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:nestedScrollingEnabled="false"
-                        android:layout_marginBottom="16dp"
+                        android:layout_marginBottom="12dp"
                         tools:listitem="@layout/item_breakdown_line" />
 
                     <!-- Guest Confirmation Form -->
@@ -555,24 +595,24 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_marginTop="16dp"
-                        android:paddingTop="16dp">
+                        android:layout_marginTop="12dp"
+                        android:paddingTop="12dp">
 
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
                             android:background="@color/gray_light"
-                            android:layout_marginBottom="16dp" />
+                            android:layout_marginBottom="12dp" />
 
                         <TextView
                             style="@style/TextSunMoonResortHeading"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/guest_details"
-                            android:textSize="14sp"
+                            android:textSize="13sp"
                             android:textStyle="bold"
                             android:textColor="@color/text_dark"
-                            android:layout_marginBottom="12dp" />
+                            android:layout_marginBottom="10dp" />
 
                         <!-- Full Name -->
                         <com.google.android.material.textfield.TextInputLayout
@@ -582,15 +622,16 @@
                             app:boxCornerRadiusBottomStart="8dp"
                             app:boxCornerRadiusTopEnd="8dp"
                             app:boxCornerRadiusTopStart="8dp"
-                            android:layout_marginBottom="12dp">
+                            android:layout_marginBottom="10dp">
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/guest_name"
                                 android:layout_width="match_parent"
-                                android:layout_height="48dp"
+                                android:layout_height="wrap_content"
+                                android:minHeight="48dp"
                                 android:hint="@string/guest_full_name"
                                 android:inputType="text"
-                                android:textSize="14sp"
+                                android:textSize="13sp"
                                 android:textColor="@color/text_dark"
                                 android:textColorHint="@color/text_light" />
                         </com.google.android.material.textfield.TextInputLayout>
@@ -602,7 +643,7 @@
                             android:text="@string/name_error"
                             android:textSize="11sp"
                             android:textColor="@color/red_error"
-                            android:layout_marginBottom="8dp"
+                            android:layout_marginBottom="4dp"
                             android:visibility="gone" />
 
                         <!-- Contact Number -->
@@ -610,7 +651,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
-                            android:layout_marginBottom="16dp">
+                            android:layout_marginBottom="12dp">
 
                             <com.google.android.material.textfield.TextInputLayout
                                 android:layout_width="match_parent"
@@ -625,11 +666,12 @@
                                 <com.google.android.material.textfield.TextInputEditText
                                     android:id="@+id/contact_number"
                                     android:layout_width="match_parent"
-                                    android:layout_height="48dp"
+                                    android:layout_height="wrap_content"
+                                    android:minHeight="48dp"
                                     android:hint="@string/ten_digit_mobile"
                                     android:inputType="phone"
                                     android:maxLength="10"
-                                    android:textSize="14sp"
+                                    android:textSize="13sp"
                                     android:textColor="@color/text_dark"
                                     android:textColorHint="@color/text_light" />
                             </com.google.android.material.textfield.TextInputLayout>
@@ -641,7 +683,7 @@
                                 android:text="@string/mobile_error"
                                 android:textSize="11sp"
                                 android:textColor="@color/red_error"
-                                android:layout_marginTop="4dp"
+                                android:layout_marginTop="2dp"
                                 android:visibility="gone" />
                         </LinearLayout>
 
@@ -649,12 +691,14 @@
                         <Button
                             android:id="@+id/confirm_booking_btn"
                             android:layout_width="match_parent"
-                            android:layout_height="48dp"
+                            android:layout_height="44dp"
                             android:text="@string/confirm_booking"
-                            android:textSize="14sp"
+                            android:textSize="13sp"
                             android:textStyle="bold"
-                            android:background="@color/resort_gold"
-                            android:textColor="@color/white" />
+                            android:background="@drawable/bg_primary_action_button"
+                            android:textColor="@color/white"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp" />
                     </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -668,31 +712,33 @@
                 app:cardElevation="4dp"
                 app:cardBackgroundColor="@color/green_light"
                 android:visibility="gone"
-                android:layout_marginBottom="20dp">
+                android:layout_marginBottom="16dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="16dp"
+                    android:padding="14dp"
                     android:gravity="center_horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/booking_confirmed"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textStyle="bold"
                         android:textColor="@color/green_success"
-                        android:layout_marginBottom="8dp" />
+                        android:layout_marginBottom="6dp"
+                        android:includeFontPadding="false" />
 
                     <TextView
                         android:id="@+id/success_message"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="13sp"
+                        android:textSize="12sp"
                         android:textColor="@color/green_success"
-                        android:gravity="center" />
+                        android:gravity="center"
+                        android:includeFontPadding="false" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>

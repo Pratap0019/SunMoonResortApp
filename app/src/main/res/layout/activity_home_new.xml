@@ -199,12 +199,12 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="36dp"
                         android:background="@color/text_dark"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:paddingStart="12dp"
-                        android:paddingEnd="12dp">
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp">
 
                         <TextView
                             android:layout_width="0dp"
@@ -212,7 +212,7 @@
                             android:layout_weight="1"
                             android:text="@string/room_type"
                             android:textColor="@color/white"
-                            android:textSize="9sp"
+                            android:textSize="11sp"
                             android:maxLines="1"
                             android:ellipsize="end"
                             android:includeFontPadding="false"
@@ -225,7 +225,7 @@
                             android:gravity="center"
                             android:text="@string/base_rate"
                             android:textColor="@color/white"
-                            android:textSize="9sp"
+                            android:textSize="11sp"
                             android:maxLines="1"
                             android:ellipsize="end"
                             android:includeFontPadding="false"
@@ -238,7 +238,7 @@
                             android:gravity="center"
                             android:text="@string/balcony"
                             android:textColor="@color/white"
-                            android:textSize="9sp"
+                            android:textSize="11sp"
                             android:maxLines="1"
                             android:ellipsize="end"
                             android:includeFontPadding="false"
@@ -251,7 +251,7 @@
                             android:gravity="center"
                             android:text="@string/nature_view"
                             android:textColor="@color/white"
-                            android:textSize="9sp"
+                            android:textSize="11sp"
                             android:maxLines="1"
                             android:ellipsize="end"
                             android:includeFontPadding="false"
@@ -264,7 +264,7 @@
                             android:gravity="center"
                             android:text="@string/wifi"
                             android:textColor="@color/white"
-                            android:textSize="9sp"
+                            android:textSize="11sp"
                             android:maxLines="1"
                             android:ellipsize="end"
                             android:includeFontPadding="false"
@@ -277,7 +277,7 @@
                             android:gravity="center"
                             android:text="@string/mini_fridge"
                             android:textColor="@color/white"
-                            android:textSize="9sp"
+                            android:textSize="11sp"
                             android:maxLines="1"
                             android:ellipsize="end"
                             android:includeFontPadding="false"
@@ -290,7 +290,7 @@
                             android:gravity="center"
                             android:text="@string/available_rooms"
                             android:textColor="@color/white"
-                            android:textSize="9sp"
+                            android:textSize="11sp"
                             android:maxLines="1"
                             android:ellipsize="end"
                             android:includeFontPadding="false"
@@ -346,7 +346,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:padding="10dp">
+                        android:padding="8dp">
 
                         <!-- Room Rates Column -->
                         <LinearLayout
@@ -359,7 +359,7 @@
                                 style="@style/TextSunMoonResortHeading"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginBottom="8dp"
+                                android:layout_marginBottom="6dp"
                                 android:text="@string/room_rates"
                                 android:textColor="@color/resort_gold"
                                 android:textSize="11sp"
@@ -376,8 +376,8 @@
                         <View
                             android:layout_width="1dp"
                             android:layout_height="match_parent"
-                            android:layout_marginStart="6dp"
-                            android:layout_marginEnd="6dp"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginEnd="4dp"
                             android:background="@color/gray_light" />
 
                         <!-- Extras Column -->
@@ -386,14 +386,14 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:orientation="vertical"
-                            android:paddingStart="4dp"
-                            android:paddingEnd="2dp">
+                            android:paddingStart="2dp"
+                            android:paddingEnd="1dp">
 
                             <TextView
                                 style="@style/TextSunMoonResortHeading"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginBottom="8dp"
+                                android:layout_marginBottom="6dp"
                                 android:text="@string/extras"
                                 android:textColor="@color/resort_gold"
                                 android:textSize="11sp"
@@ -410,8 +410,8 @@
                         <View
                             android:layout_width="1dp"
                             android:layout_height="match_parent"
-                            android:layout_marginStart="6dp"
-                            android:layout_marginEnd="6dp"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginEnd="4dp"
                             android:background="@color/gray_light" />
 
                         <!-- Pet Fees Column -->
@@ -420,14 +420,14 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:orientation="vertical"
-                            android:paddingStart="4dp"
-                            android:paddingEnd="2dp">
+                            android:paddingStart="2dp"
+                            android:paddingEnd="1dp">
 
                             <TextView
                                 style="@style/TextSunMoonResortHeading"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginBottom="8dp"
+                                android:layout_marginBottom="6dp"
                                 android:text="@string/pet_fees"
                                 android:textColor="@color/resort_gold"
                                 android:textSize="11sp"
@@ -483,21 +483,21 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:padding="16dp">
+                        android:padding="14dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="8dp"
+                            android:layout_marginBottom="6dp"
                             android:text="@string/mobile_number"
                             android:textColor="@color/text_dark"
-                            android:textSize="14sp"
+                            android:textSize="13sp"
                             android:textStyle="bold" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="48dp"
-                            android:layout_marginBottom="16dp"
+                            android:layout_height="44dp"
+                            android:layout_marginBottom="12dp"
                             android:background="@drawable/edit_text_background"
                             android:gravity="center_vertical"
                             android:orientation="horizontal"
@@ -510,7 +510,7 @@
                                 android:layout_marginEnd="8dp"
                                 android:text="+91"
                                 android:textColor="@color/text_dark"
-                                android:textSize="14sp"
+                                android:textSize="13sp"
                                 android:textStyle="bold" />
 
                             <EditText
@@ -524,17 +524,17 @@
                                 android:maxLength="10"
                                 android:textColor="@color/text_dark"
                                 android:textColorHint="@color/text_light"
-                                android:textSize="14sp" />
+                                android:textSize="13sp" />
                         </LinearLayout>
 
                         <Button
                             android:id="@+id/search_booking_btn"
                             android:layout_width="match_parent"
-                            android:layout_height="48dp"
-                            android:background="@color/resort_gold"
+                            android:layout_height="44dp"
+                            android:background="@drawable/bg_primary_action_button"
                             android:text="@string/search_booking"
                             android:textColor="@color/white"
-                            android:textSize="14sp"
+                            android:textSize="13sp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -544,16 +544,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp"
-                        android:paddingBottom="16dp"
+                        android:paddingStart="14dp"
+                        android:paddingEnd="14dp"
+                        android:paddingBottom="14dp"
                         android:visibility="gone">
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/search_results_list"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="12dp"
                             android:nestedScrollingEnabled="false"
                             tools:listitem="@layout/item_booking_result" />
                     </LinearLayout>

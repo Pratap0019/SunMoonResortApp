@@ -8,21 +8,19 @@ import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.sunmoonresort.R
 import com.example.sunmoonresort.data.service.BookingService
 import com.example.sunmoonresort.databinding.ActivityBookingNewBinding
 import com.example.sunmoonresort.model.Extras
 import com.example.sunmoonresort.model.RoomType
 import com.example.sunmoonresort.ui.adapter.BreakdownAdapter
 import com.example.sunmoonresort.ui.adapter.BreakdownItem
-import com.google.android.material.chip.Chip
+import com.google.android.material.datepicker.CalendarConstraints
+import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.threeten.bp.Instant
 import org.threeten.bp.LocalDate
 import org.threeten.bp.ZoneId
 import org.threeten.bp.temporal.ChronoUnit
-import java.util.Locale
 
 class BookingActivity : AppCompatActivity() {
 
@@ -35,6 +33,7 @@ class BookingActivity : AppCompatActivity() {
 
     private val selectedExtras = mutableSetOf<Extras>()
     private var spaSessionsSelected = 1
+    private var selectedPetWeightKg: Double? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,17 +42,27 @@ class BookingActivity : AppCompatActivity() {
 
         initializeUI()
         setupDatePickers()
-        setupExtrasCheckboxes()
+        setupExtrasSelection()
         setupSpaSessions()
+        setupPetWeightSelection()
         setupButtons()
     }
 
     private fun initializeUI() {
-        binding.adminBtn.setOnClickListener {
-            startActivity(android.content.Intent(this, AdminActivity::class.java))
+        binding.backBtn.setOnClickListener {
+            navigateBackOrHome()
         }
 
         binding.contactNumber.filters = arrayOf(InputFilter.LengthFilter(10))
+    }
+
+    private fun navigateBackOrHome() {
+        if (isTaskRoot) {
+            startActivity(android.content.Intent(this, HomeActivity::class.java))
+            finish()
+            return
+        }
+        onBackPressedDispatcher.onBackPressed()
     }
 
     private fun setupDatePickers() {
@@ -61,9 +70,16 @@ class BookingActivity : AppCompatActivity() {
         binding.checkOutDate.inputType = InputType.TYPE_NULL
 
         binding.checkInDate.setOnClickListener {
-            showDatePickerDialog { date ->
+            showDatePickerDialog(minDate = LocalDate.now()) { date ->
                 selectedCheckIn = date
                 binding.checkInDate.setText(date.toString())
+
+                if (selectedCheckOut != null && !selectedCheckOut!!.isAfter(date)) {
+                    selectedCheckOut = null
+                    binding.checkOutDate.setText("")
+                    binding.daysStayed.setText("")
+                }
+
                 validateDateRange()
             }
         }
@@ -82,14 +98,18 @@ class BookingActivity : AppCompatActivity() {
         }
     }
 
-    @Suppress("NewApi")
     private fun showDatePickerDialog(minDate: LocalDate? = null, onDateSelected: (LocalDate) -> Unit) {
         val todayMs = LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli()
         val minMs = (minDate?.atStartOfDay(ZoneId.systemDefault())?.toInstant()?.toEpochMilli()) ?: todayMs
+        val constraints = CalendarConstraints.Builder()
+            .setStart(todayMs)
+            .setValidator(DateValidatorPointForward.from(minMs))
+            .build()
 
         val datePicker = MaterialDatePicker.Builder.datePicker()
             .setSelection(minMs)
             .setTitleText("Select Date")
+            .setCalendarConstraints(constraints)
             .build()
 
         datePicker.addOnPositiveButtonClickListener { selection ->
@@ -122,35 +142,36 @@ class BookingActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupExtrasCheckboxes() {
-        binding.extrasContainer.removeAllViews()
+    private fun setupExtrasSelection() {
+        binding.extraMattressRadio.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) selectedExtras.add(Extras.MATTRESS) else selectedExtras.remove(Extras.MATTRESS)
+        }
 
-        val extrasItems = listOf(
-            Extras.MATTRESS to "Extra Mattress (₹500/day)",
-            Extras.SPA to "SPA (₹1500/session)",
-            Extras.GymPASS to "Gym Access (₹500/day)",
-            Extras.PoolPASS to "Pool Access (₹500/day)"
-        )
+        binding.extraGymRadio.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) selectedExtras.add(Extras.GymPASS) else selectedExtras.remove(Extras.GymPASS)
+        }
 
-        for ((extra, label) in extrasItems) {
-            val chip = Chip(this).apply {
-                text = label
-                isCheckable = true
-                setOnCheckedChangeListener { _, isChecked ->
-                    if (isChecked) {
-                        selectedExtras.add(extra)
-                        if (extra == Extras.SPA) {
-                            binding.spaSessionsContainer.visibility = View.VISIBLE
-                        }
-                    } else {
-                        selectedExtras.remove(extra)
-                        if (extra == Extras.SPA) {
-                            binding.spaSessionsContainer.visibility = View.GONE
-                        }
-                    }
+        binding.extraPoolRadio.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) selectedExtras.add(Extras.PoolPASS) else selectedExtras.remove(Extras.PoolPASS)
+        }
+
+        binding.extraSpaRadio.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                selectedExtras.add(Extras.SPA)
+                binding.spaSessionsContainer.isEnabled = true
+                binding.spaSessionsContainer.alpha = 1f
+                binding.spaSessionsSpinner.isEnabled = true
+                if (binding.spaSessionsSpinner.text.isNullOrBlank()) {
+                    binding.spaSessionsSpinner.setText("1 session", false)
                 }
+            } else {
+                selectedExtras.remove(Extras.SPA)
+                binding.spaSessionsSpinner.setText("", false)
+                binding.spaSessionsSpinner.isEnabled = false
+                binding.spaSessionsContainer.isEnabled = false
+                binding.spaSessionsContainer.alpha = 0.6f
+                spaSessionsSelected = 1
             }
-            binding.extrasContainer.addView(chip)
         }
     }
 
@@ -158,8 +179,23 @@ class BookingActivity : AppCompatActivity() {
         val sessionOptions = listOf("1 session", "2 sessions", "3 sessions")
         val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, sessionOptions)
         binding.spaSessionsSpinner.setAdapter(adapter)
+        binding.spaSessionsSpinner.setText("1 session", false)
         binding.spaSessionsSpinner.setOnItemClickListener { _, _, position, _ ->
             spaSessionsSelected = position + 1
+        }
+    }
+
+    private fun setupPetWeightSelection() {
+        val petOptions = listOf("Small", "Medium", "Large")
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, petOptions)
+        binding.petWeightSpinner.setAdapter(adapter)
+        binding.petWeightSpinner.setOnItemClickListener { _, _, position, _ ->
+            selectedPetWeightKg = when (position) {
+                0 -> 5.0
+                1 -> 10.0
+                2 -> 20.0
+                else -> null
+            }
         }
     }
 
@@ -225,7 +261,7 @@ class BookingActivity : AppCompatActivity() {
         val roomType = RoomType.valueOf(roomTypeName)
 
         val daysStayed = binding.daysStayed.text.toString().toIntOrNull() ?: 0
-        val petWeight = binding.petWeight.text.toString().toDoubleOrNull()
+        val petWeight = selectedPetWeightKg
 
         try {
             val room = BookingService.getFirstAvailableRoom(roomType, selectedCheckIn!!, selectedCheckOut!!)

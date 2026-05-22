@@ -11,14 +11,14 @@
         app:cardCornerRadius="8dp"
         app:cardElevation="2dp"
         app:cardBackgroundColor="@color/white"
-        android:layout_marginBottom="12dp">
+        android:layout_marginBottom="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingHorizontal="12dp"
-            android:paddingVertical="10dp">
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="8dp">
 
             <!-- Top Row: Booking ID, Status -->
             <LinearLayout
@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:layout_marginBottom="8dp">
+                android:layout_marginBottom="6dp">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -58,7 +58,7 @@
                 <com.google.android.material.chip.Chip
                     android:id="@+id/booking_status"
                     android:layout_width="wrap_content"
-                    android:layout_height="32dp"
+                    android:layout_height="30dp"
                     android:textSize="11sp" />
             </LinearLayout>
 
@@ -68,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:layout_marginBottom="8dp">
+                android:layout_marginBottom="6dp">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -183,7 +183,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/gray_light"
-                android:layout_marginBottom="8dp" />
+                android:layout_marginBottom="6dp" />
 
             <!-- Total Amount and Action -->
             <LinearLayout
@@ -222,7 +222,7 @@
                 <Button
                     android:id="@+id/cancel_booking_btn"
                     android:layout_width="wrap_content"
-                    android:layout_height="32dp"
+                    android:layout_height="30dp"
                     android:text="@string/cancel"
                     android:textSize="11sp"
                     android:background="@color/red_error"
