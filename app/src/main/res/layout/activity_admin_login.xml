@@ -56,14 +56,15 @@
     <!-- Main Content -->
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:padding="32dp"
-            android:gravity="center_horizontal">
+            android:padding="32dp">
 
             <!-- Decorative Space -->
             <Space
@@ -77,30 +78,30 @@
                 android:layout_marginBottom="32dp"
                 android:contentDescription="@string/logo_description"
                 android:scaleType="centerInside"
-                app:tint="@color/resort_gold"
-                app:srcCompat="@drawable/ic_launcher_foreground" />
+                app:srcCompat="@drawable/ic_launcher_foreground"
+                app:tint="@color/resort_gold" />
 
             <!-- Title -->
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
                 android:text="@string/admin_login_title"
-                android:textSize="28sp"
-                android:textStyle="bold"
-                android:textColor="@color/resort_gold"
                 android:textAlignment="center"
-                android:layout_marginBottom="12dp" />
+                android:textColor="@color/resort_gold"
+                android:textSize="28sp"
+                android:textStyle="bold" />
 
             <!-- Subtitle -->
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/admin_login_subtitle"
-                android:textSize="14sp"
-                android:textColor="@color/text_brown"
-                android:textAlignment="center"
                 android:layout_marginBottom="48dp"
-                android:lineSpacingExtra="4dp" />
+                android:lineSpacingExtra="4dp"
+                android:text="@string/admin_login_subtitle"
+                android:textAlignment="center"
+                android:textColor="@color/text_brown"
+                android:textSize="14sp" />
 
             <!-- Password Input Field -->
             <com.google.android.material.textfield.TextInputLayout
@@ -109,12 +110,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 app:boxBackgroundColor="@color/white"
-                app:boxStrokeColor="@color/resort_gold"
-                app:boxStrokeWidth="2dp"
                 app:boxCornerRadiusBottomEnd="12dp"
                 app:boxCornerRadiusBottomStart="12dp"
                 app:boxCornerRadiusTopEnd="12dp"
                 app:boxCornerRadiusTopStart="12dp"
+                app:boxStrokeColor="@color/resort_gold"
+                app:boxStrokeWidth="2dp"
                 app:counterEnabled="false"
                 app:errorTextColor="@color/red_error"
                 app:hintTextColor="@color/resort_gold">
@@ -123,13 +124,13 @@
                     android:id="@+id/password_input"
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
+                    android:fontFamily="sans-serif"
                     android:hint="@string/password_hint"
                     android:inputType="textPassword"
-                    android:textColor="@color/text_dark"
-                    android:textColorHint="@color/text_light"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
-                    android:fontFamily="sans-serif" />
+                    android:textColor="@color/text_dark"
+                    android:textColorHint="@color/text_light" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Progress Indicator (hidden by default) -->
@@ -146,11 +147,11 @@
                 android:id="@+id/login_button"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
+                android:letterSpacing="0.05"
                 android:text="@string/login"
+                android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:textColor="@color/white"
-                android:letterSpacing="0.05"
                 app:backgroundTint="@color/resort_gold"
                 app:cornerRadius="12dp"
                 app:elevation="6dp"
@@ -161,12 +162,15 @@
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="🔒 Your password is secure and encrypted"
-                android:textSize="12sp"
-                android:textColor="@color/text_light"
-                android:textAlignment="center"
                 android:layout_marginTop="32dp"
-                android:drawablePadding="8dp" />
+                android:drawablePadding="8dp"
+                android:text="🔒 Your password is secure and encrypted"
+                android:textAlignment="center"
+                android:textColor="@color/text_light"
+                android:textSize="12sp" />
+
+            <!-- Shared Footer -->
+            <include layout="@layout/footer_section" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

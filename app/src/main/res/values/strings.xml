@@ -136,7 +136,7 @@
      <string name="view_bill">View Bill</string>
 
      <!-- Admin Login Strings -->
-     <string name="admin_login_title">Admin Access</string>
+     <string name="admin_login_title">Admin Access Only</string>
      <string name="admin_login_subtitle">Enter your password to access the admin panel</string>
      <string name="password">Password</string>
      <string name="password_hint">Enter admin password</string>
