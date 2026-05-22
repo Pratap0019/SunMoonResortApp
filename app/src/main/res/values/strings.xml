@@ -19,13 +19,10 @@
 
     <!-- Room Availability -->
     <string name="room_availability_overview">Room Availability Overview</string>
-    <string name="room_type">Room Type</string>
-    <string name="base_rate">Base Rate / Night</string>
-    <string name="balcony">Balcony</string>
-    <string name="nature_view">Nature\'s View</string>
-    <string name="wifi">WiFi</string>
-    <string name="mini_fridge">Mini-Fridge</string>
-    <string name="available_rooms">Available Rooms</string>
+    <string name="room_type">Room</string>
+    <string name="base_rate">Rate/Night</string>
+    <string name="amenities">Amenities</string>
+    <string name="available_rooms">Available Room</string>
 
     <!-- Pricing Information -->
     <string name="pricing_information">Pricing Information</string>

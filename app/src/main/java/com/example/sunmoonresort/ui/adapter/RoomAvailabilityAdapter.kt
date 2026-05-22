@@ -20,33 +20,12 @@ class RoomAvailabilityAdapter(
             binding.roomTypeName.text = roomType.name
             binding.roomRate.text = "₹ ${details["rate"]}"
 
-            // Balcony
-            setupChip(
-                binding.balconyBadge,
-                if (details["hasBalcony"] as Boolean) "Yes" else "No",
-                details["hasBalcony"] as Boolean
-            )
-
-            // Nature View
-            setupChip(
-                binding.natureViewBadge,
-                if (details["hasNatureView"] as Boolean) "Yes" else "No",
-                details["hasNatureView"] as Boolean
-            )
-
-            // WiFi (free for all)
-            setupChip(
-                binding.wifiBadge,
-                if (details["hasWifi"] as Boolean) "Included" else "No",
-                details["hasWifi"] as Boolean
-            )
-
-            // Mini-Fridge
-            setupChip(
-                binding.minifridgeBadge,
-                if (details["hasMinifridge"] as Boolean) "Included" else "Not Available",
-                details["hasMinifridge"] as Boolean
-            )
+            val amenities = mutableListOf<String>()
+            if (details["hasBalcony"] as? Boolean == true) amenities.add("Balcony")
+            if (details["hasNatureView"] as? Boolean == true) amenities.add("Nature's View")
+            if (details["hasWifi"] as? Boolean == true) amenities.add("WiFi")
+            if (details["hasMinifridge"] as? Boolean == true) amenities.add("Fridge")
+            binding.amenitiesText.text = if (amenities.isEmpty()) "-" else amenities.joinToString(" • ")
 
             // Availability
             val available = (details["available"] as? Number)?.toInt() ?: 0

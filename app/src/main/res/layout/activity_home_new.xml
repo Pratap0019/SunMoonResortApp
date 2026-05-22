@@ -209,7 +209,7 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_weight="0.8"
                             android:text="@string/room_type"
                             android:textColor="@color/white"
                             android:textSize="11sp"
@@ -221,7 +221,7 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_weight="0.9"
                             android:gravity="center"
                             android:text="@string/base_rate"
                             android:textColor="@color/white"
@@ -234,9 +234,9 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_weight="2.3"
                             android:gravity="center"
-                            android:text="@string/balcony"
+                            android:text="@string/amenities"
                             android:textColor="@color/white"
                             android:textSize="11sp"
                             android:maxLines="1"
@@ -247,46 +247,7 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="@string/nature_view"
-                            android:textColor="@color/white"
-                            android:textSize="11sp"
-                            android:maxLines="1"
-                            android:ellipsize="end"
-                            android:includeFontPadding="false"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="@string/wifi"
-                            android:textColor="@color/white"
-                            android:textSize="11sp"
-                            android:maxLines="1"
-                            android:ellipsize="end"
-                            android:includeFontPadding="false"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="@string/mini_fridge"
-                            android:textColor="@color/white"
-                            android:textSize="11sp"
-                            android:maxLines="1"
-                            android:ellipsize="end"
-                            android:includeFontPadding="false"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_weight="1.1"
                             android:gravity="center"
                             android:text="@string/available_rooms"
                             android:textColor="@color/white"

@@ -7,42 +7,35 @@
     android:paddingStart="0dp"
     android:paddingEnd="0dp">
 
-
-    <!-- Data Row -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:minHeight="40dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="40dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:background="@color/white"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:paddingTop="4dp"
-            android:paddingBottom="4dp">
-
-            <TextView
+        <TextView
             android:id="@+id/room_type_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-                    android:textSize="11sp"
+            android:layout_weight="0.8"
+            android:textSize="11sp"
             android:textStyle="bold"
-                    android:textColor="@color/text_dark"
-                    android:maxLines="1"
-                    android:ellipsize="end"
-                    android:includeFontPadding="false" />
+            android:textColor="@color/text_dark"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:includeFontPadding="false" />
 
         <TextView
             android:id="@+id/room_rate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.9"
             android:textSize="11sp"
             android:textColor="@color/text_dark"
             android:gravity="center"
@@ -50,61 +43,31 @@
             android:ellipsize="end"
             android:includeFontPadding="false" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/balcony_badge"
+        <TextView
+            android:id="@+id/amenities_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2.3"
+            android:textSize="11sp"
+            android:textColor="@color/text_dark"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:includeFontPadding="false" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/available_badge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.1"
             android:textSize="11sp"
             android:gravity="center"
             app:chipMinHeight="26dp"
             app:ensureMinTouchTargetSize="false" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/nature_view_badge"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="11sp"
-            android:gravity="center"
-            app:chipMinHeight="26dp"
-            app:ensureMinTouchTargetSize="false" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/wifi_badge"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="11sp"
-            android:gravity="center"
-            app:chipMinHeight="26dp"
-            app:ensureMinTouchTargetSize="false" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/minifridge_badge"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="11sp"
-            android:gravity="center"
-            app:chipMinHeight="26dp"
-            app:ensureMinTouchTargetSize="false" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/available_badge"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="11sp"
-                android:gravity="center"
-                app:chipMinHeight="26dp"
-                app:ensureMinTouchTargetSize="false" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/gray_light" />
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_light" />
 </LinearLayout>
 

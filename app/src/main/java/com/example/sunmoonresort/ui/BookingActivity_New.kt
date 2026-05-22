@@ -80,6 +80,7 @@ class BookingActivity : AppCompatActivity() {
                     binding.daysStayed.setText("")
                 }
 
+                resetRoomTypeSelectionForDateChange()
                 validateDateRange()
             }
         }
@@ -93,9 +94,20 @@ class BookingActivity : AppCompatActivity() {
             showDatePickerDialog(selectedCheckIn!!.plusDays(1)) { date ->
                 selectedCheckOut = date
                 binding.checkOutDate.setText(date.toString())
+                resetRoomTypeSelectionForDateChange()
                 validateDateRange()
             }
         }
+    }
+
+    private fun resetRoomTypeSelectionForDateChange() {
+        availabilityChecked = false
+        currentBill = null
+        assignedRoomNumber = null
+        binding.roomTypeSpinner.setText("", false)
+        binding.roomTypeSpinner.isEnabled = false
+        binding.calculatePriceBtn.isEnabled = false
+        binding.priceBreakdownCard.visibility = View.GONE
     }
 
     private fun showDatePickerDialog(minDate: LocalDate? = null, onDateSelected: (LocalDate) -> Unit) {
@@ -234,12 +246,15 @@ class BookingActivity : AppCompatActivity() {
         if (roomOptions.isEmpty()) {
             showError("No rooms available for selected dates")
             availabilityChecked = false
+            binding.roomTypeSpinner.setText("", false)
             binding.roomTypeSpinner.isEnabled = false
             return
         }
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, roomOptions)
         binding.roomTypeSpinner.setAdapter(adapter)
+        // Preselect first available option after date availability check.
+        binding.roomTypeSpinner.setText(roomOptions.first(), false)
         binding.calculatePriceBtn.isEnabled = true
 
         showSuccess("Availability checked! Select a room type.")
