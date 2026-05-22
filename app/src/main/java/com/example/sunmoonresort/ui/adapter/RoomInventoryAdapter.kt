@@ -2,6 +2,8 @@ package com.example.sunmoonresort.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sunmoonresort.R
 import com.example.sunmoonresort.databinding.ItemRoomInventoryBinding
@@ -9,7 +11,7 @@ import com.example.sunmoonresort.model.Room
 
 data class RoomInventoryItem(
     val room: Room,
-    val bookedDates: String
+    val bookedDatesList: List<String>
 )
 
 class RoomInventoryAdapter(
@@ -22,15 +24,40 @@ class RoomInventoryAdapter(
         fun bind(item: RoomInventoryItem) {
             binding.roomNumber.text = item.room.number.toString()
             binding.roomType.text = item.room.roomType.name
-            binding.bookedDates.text = item.bookedDates
 
-            // Status chip
-            val isBooked = item.bookedDates != "-"
+            val isBooked = item.bookedDatesList.isNotEmpty()
             binding.statusChip.text = if (isBooked) "Booked" else "Available"
             binding.statusChip.setChipBackgroundColorResource(
                 if (isBooked) R.color.badge_booked
                 else R.color.badge_available
             )
+
+            // Dynamically populate booked date rows
+            binding.bookedDatesContainer.removeAllViews()
+            val context = binding.root.context
+            if (item.bookedDatesList.isEmpty()) {
+                val tv = TextView(context)
+                tv.text = "-"
+                tv.textSize = 10f
+                tv.setTextColor(ContextCompat.getColor(context, R.color.gray_light))
+                tv.includeFontPadding = false
+                binding.bookedDatesContainer.addView(tv)
+            } else {
+                item.bookedDatesList.forEach { dateRange ->
+                    val tv = TextView(context)
+                    tv.text = dateRange
+                    tv.textSize = 10f
+                    tv.setTextColor(ContextCompat.getColor(context, R.color.text_dark))
+                    tv.includeFontPadding = false
+                    val lp = ViewGroup.MarginLayoutParams(
+                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT
+                    )
+                    lp.bottomMargin = 2
+                    tv.layoutParams = lp
+                    binding.bookedDatesContainer.addView(tv)
+                }
+            }
         }
     }
 
@@ -49,4 +76,3 @@ class RoomInventoryAdapter(
 
     override fun getItemCount() = items.size
 }
-

@@ -70,8 +70,8 @@ class AdminActivity : AppCompatActivity() {
     fun loadBookings() {
         try {
             val bookings = BookingService.getAllBookingRecords()
-            val roomRanges = BookingService.getRoomBookingRanges()
-            displayBookingsList(bookings, roomRanges)
+            val roomDatesList = BookingService.getRoomBookingDatesList()
+            displayBookingsList(bookings, roomDatesList)
         } catch (e: Exception) {
             showError("Error loading bookings: ${e.message}")
         }
@@ -146,7 +146,7 @@ class AdminActivity : AppCompatActivity() {
         loadBookings()
     }
 
-    private fun displayBookingsList(bookings: List<BookingRecord>, roomRanges: Map<Int, String>) {
+    private fun displayBookingsList(bookings: List<BookingRecord>, roomDatesList: Map<Int, List<String>>) {
         val ongoingStatuses = setOf(BookingStatus.CONFIRMED, BookingStatus.CHECKED_IN)
         val completedStatuses = setOf(BookingStatus.CHECKED_OUT, BookingStatus.CANCELLED)
 
@@ -195,7 +195,7 @@ class AdminActivity : AppCompatActivity() {
             .map { room ->
                 RoomInventoryItem(
                     room = room,
-                    bookedDates = roomRanges[room.number] ?: "-"
+                    bookedDatesList = roomDatesList[room.number] ?: emptyList()
                 )
             }
 

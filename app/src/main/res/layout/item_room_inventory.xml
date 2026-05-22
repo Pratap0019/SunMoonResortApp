@@ -8,50 +8,50 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="10dp"
-        android:gravity="center_vertical">
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        android:gravity="top">
 
-    <TextView
-        android:id="@+id/room_number"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:textSize="11sp"
-        android:textStyle="bold"
-        android:textColor="@color/text_dark"
-        android:maxLines="1"
-        android:ellipsize="end"
-        android:includeFontPadding="false" />
+        <TextView
+            android:id="@+id/room_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_dark"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:includeFontPadding="false" />
 
-    <TextView
-        android:id="@+id/room_type"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1.2"
-        android:textSize="11sp"
-        android:textColor="@color/text_dark"
-        android:maxLines="1"
-        android:ellipsize="end"
-        android:includeFontPadding="false" />
+        <TextView
+            android:id="@+id/room_type"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.2"
+            android:textSize="10sp"
+            android:textColor="@color/text_dark"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:includeFontPadding="false" />
 
-    <com.google.android.material.chip.Chip
-        android:id="@+id/status_chip"
-        android:layout_width="wrap_content"
-        android:layout_height="28dp"
-        android:textSize="11sp"
-        android:layout_marginEnd="8dp" />
+        <com.google.android.material.chip.Chip
+            android:id="@+id/status_chip"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="22dp"
+            android:textSize="9sp"
+            android:layout_marginEnd="4dp" />
 
-    <TextView
-        android:id="@+id/booked_dates"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1.5"
-        android:textSize="11sp"
-        android:textColor="@color/gray_light"
-        android:maxLines="1"
-        android:ellipsize="end"
-        android:includeFontPadding="false" />
+        <LinearLayout
+            android:id="@+id/booked_dates_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.5"
+            android:orientation="vertical" />
+
     </LinearLayout>
 
     <View
@@ -59,4 +59,3 @@
         android:layout_height="1dp"
         android:background="@color/gray_light" />
 </LinearLayout>
-

@@ -185,7 +185,7 @@ object BookingService {
     }
 
     /**
-     * Build room booking ranges for admin view.
+     * Build room booking ranges for admin view (legacy single string).
      */
     fun getRoomBookingRanges(): Map<Int, String> {
         val ranges = mutableMapOf<Int, String>()
@@ -198,6 +198,22 @@ object BookingService {
             ranges[room.number] = if (rangeText.isBlank()) "-" else rangeText
         }
         return ranges
+    }
+
+    /**
+     * Build room booking date ranges list for admin inventory view.
+     * Returns a list of "checkIn → checkOut" strings per room for active bookings.
+     */
+    fun getRoomBookingDatesList(): Map<Int, List<String>> {
+        val result = mutableMapOf<Int, List<String>>()
+        HotelData.rooms.forEach { room ->
+            val bookings = HotelData.bookings[room.number] ?: emptyList()
+            val dates = bookings
+                .filter { it.status == BookingStatus.CONFIRMED || it.status == BookingStatus.CHECKED_IN }
+                .map { "${it.checkInDate} → ${it.checkOutDate}" }
+            result[room.number] = dates
+        }
+        return result
     }
 
     /**
