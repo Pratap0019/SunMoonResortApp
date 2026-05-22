@@ -2,6 +2,8 @@ package com.example.sunmoonresort.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.InputFilter
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -20,6 +22,19 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeNewBinding
 
+    private val autoSlideHandler = Handler(Looper.getMainLooper())
+    private val autoSlideRunnable = object : Runnable {
+        override fun run() {
+            val viewPager = binding.carouselViewpager
+            val adapter = viewPager.adapter ?: return
+            val totalItems = adapter.itemCount
+            if (totalItems == 0) return
+            val nextItem = (viewPager.currentItem + 1) % totalItems
+            viewPager.setCurrentItem(nextItem, true)
+            autoSlideHandler.postDelayed(this, AUTO_SLIDE_DELAY_MS)
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeNewBinding.inflate(layoutInflater)
@@ -32,6 +47,18 @@ class HomeActivity : AppCompatActivity() {
         setupSearchBooking()
         setupCTAButtons()
     }
+
+    override fun onResume() {
+        super.onResume()
+        autoSlideHandler.postDelayed(autoSlideRunnable, AUTO_SLIDE_DELAY_MS)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        autoSlideHandler.removeCallbacks(autoSlideRunnable)
+    }
+
+    // ...existing code...
 
     private fun initializeUI() {
         // Admin button navigation - go to login first
@@ -212,6 +239,10 @@ class HomeActivity : AppCompatActivity() {
             message,
             com.google.android.material.snackbar.Snackbar.LENGTH_SHORT
         ).show()
+    }
+
+    companion object {
+        private const val AUTO_SLIDE_DELAY_MS = 2000L
     }
 }
 
