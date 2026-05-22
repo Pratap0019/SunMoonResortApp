@@ -114,6 +114,10 @@ class AdminActivity : AppCompatActivity() {
         binding.bookingsList.layoutManager = LinearLayoutManager(this)
         binding.roomInventoryList.layoutManager = LinearLayoutManager(this)
 
+        binding.backButton.setOnClickListener {
+            finish()
+        }
+
         binding.newBookingBtn.setOnClickListener {
             startActivity(Intent(this, BookingActivity::class.java))
         }

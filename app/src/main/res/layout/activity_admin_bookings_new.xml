@@ -42,36 +42,18 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/header_decoration" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <Button
+                    android:id="@+id/back_button"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="84dp"
                     android:layout_height="40dp"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:paddingEnd="0dp">
-
-                    <Button
-                        android:id="@+id/new_booking_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="32dp"
-                        android:background="@color/resort_gold"
-                        android:paddingStart="12dp"
-                        android:paddingEnd="12dp"
-                        android:text="@string/new_booking"
-                        android:textColor="@color/white"
-                        android:textSize="10sp" />
-
-                    <Button
-                        android:id="@+id/logout_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="32dp"
-                        android:layout_marginStart="4dp"
-                        android:text="@string/logout"
-                        android:background="@color/red_error"
-                        android:paddingStart="12dp"
-                        android:paddingEnd="12dp"
-                        android:textColor="@color/white"
-                        android:textSize="10sp" />
-                </LinearLayout>
+                    android:background="@color/white"
+                    android:letterSpacing="0.1"
+                    android:text="@string/back"
+                    android:textAllCaps="true"
+                    android:textColor="@color/resort_gold_dark"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
             </LinearLayout>
         </FrameLayout>
 
@@ -81,6 +63,51 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:gravity="end"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/new_booking_btn"
+                    android:layout_width="68dp"
+                    android:layout_height="28dp"
+                    android:backgroundTint="@color/resort_gold_dark"
+                    android:gravity="center"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="0dp"
+                    android:text="@string/new_booking"
+                    android:textColor="@color/white"
+                    android:textSize="8sp" />
+
+                <Button
+                    android:id="@+id/logout_btn"
+                    android:layout_width="68dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="4dp"
+                    android:backgroundTint="@color/red_error"
+                    android:gravity="center"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="0dp"
+                    android:text="@string/logout"
+                    android:textColor="@color/white"
+                    android:textSize="8sp" />
+            </LinearLayout>
 
             <!-- Page Title -->
             <LinearLayout
@@ -107,10 +134,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
                         android:text="@string/admin_access_only"
-                        android:textSize="12sp"
-                        android:textColor="@color/gray_light"
-                        android:layout_marginTop="4dp" />
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
                 </LinearLayout>
             </LinearLayout>
 
