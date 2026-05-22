@@ -114,6 +114,7 @@ object BookingService {
             status = BookingStatus.CONFIRMED
         )
         HotelData.bookings.computeIfAbsent(roomNumber) { mutableListOf() }.add(bookingDetails)
+        com.example.sunmoonresort.data.BookingLocalStore.saveBookings(HotelData.bookings)
         return bookingId
     }
 
@@ -148,6 +149,7 @@ object BookingService {
         }
 
         targetBooking.status = BookingStatus.CANCELLED
+        com.example.sunmoonresort.data.BookingLocalStore.saveBookings(HotelData.bookings)
         return Result.Success("Booking $bookingId has been cancelled.")
     }
 
@@ -172,6 +174,7 @@ object BookingService {
                 }
                 if (canTransition) {
                     booking.status = targetStatus
+                    com.example.sunmoonresort.data.BookingLocalStore.saveBookings(HotelData.bookings)
                     return@forEach
                 }
             }
@@ -277,4 +280,3 @@ object BookingService {
         data class Error(val message: String) : Result()
     }
 }
-

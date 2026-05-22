@@ -51,6 +51,13 @@ object HotelData {
     // Stores confirmed bookings: room number -> booking list.
     val bookings: MutableMap<Int, MutableList<BookingDetails>> = mutableMapOf()
 
+    fun replaceBookings(newBookings: Map<Int, List<BookingDetails>>) {
+        bookings.clear()
+        newBookings.forEach { (roomNumber, roomBookings) ->
+            bookings[roomNumber] = roomBookings.toMutableList()
+        }
+    }
+
     fun findRoom(roomNumber: Int): Room? = rooms.firstOrNull { it.number == roomNumber }
 
     fun getRoomRate(roomType: RoomType): Double = roomRates[roomType] ?: 0.0
@@ -63,4 +70,3 @@ object HotelData {
     fun getBookingsForRoom(roomNumber: Int): List<BookingDetails> =
         bookings[roomNumber].orEmpty()
 }
-
