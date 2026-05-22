@@ -22,24 +22,28 @@ class RoomInventoryAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: RoomInventoryItem) {
+            val context = binding.root.context
+
             binding.roomNumber.text = item.room.number.toString()
             binding.roomType.text = item.room.roomType.name
 
             val isBooked = item.bookedDatesList.isNotEmpty()
-            binding.statusChip.text = if (isBooked) "Booked" else "Available"
+            binding.statusChip.text = context.getString(
+                if (isBooked) R.string.no else R.string.yes
+            )
             binding.statusChip.setChipBackgroundColorResource(
                 if (isBooked) R.color.badge_booked
                 else R.color.badge_available
             )
+            binding.statusChip.setTextColor(ContextCompat.getColor(context, R.color.text_dark))
 
             // Dynamically populate booked date rows
             binding.bookedDatesContainer.removeAllViews()
-            val context = binding.root.context
             if (item.bookedDatesList.isEmpty()) {
                 val tv = TextView(context)
                 tv.text = "-"
                 tv.textSize = 10f
-                tv.setTextColor(ContextCompat.getColor(context, R.color.gray_light))
+                tv.setTextColor(ContextCompat.getColor(context, R.color.text_muted))
                 tv.includeFontPadding = false
                 binding.bookedDatesContainer.addView(tv)
             } else {

@@ -181,7 +181,7 @@ class BookingActivity : AppCompatActivity() {
                 binding.spaSessionsSpinner.setText("", false)
                 binding.spaSessionsSpinner.isEnabled = false
                 binding.spaSessionsContainer.isEnabled = false
-                binding.spaSessionsContainer.alpha = 0.6f
+                binding.spaSessionsContainer.alpha = 0.85f
                 spaSessionsSelected = 1
             }
         }

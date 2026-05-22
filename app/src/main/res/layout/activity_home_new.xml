@@ -73,7 +73,7 @@
             <ImageView
                 android:id="@+id/resort_logo"
                 android:layout_width="match_parent"
-                android:layout_height="222dp"
+                android:layout_height="205dp"
                 android:contentDescription="@string/resort_logo_desc"
                 android:paddingStart="1dp"
                 android:paddingEnd="0dp"

@@ -3,6 +3,7 @@ package com.example.sunmoonresort.ui.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sunmoonresort.R
 import com.example.sunmoonresort.databinding.ItemAdminBookingBinding
@@ -24,9 +25,13 @@ class AdminBookingsAdapter(
             binding.roomNumber.text = item.roomNumber.toString()
             binding.roomType.text = item.roomType
             binding.guestName.text = item.guestName
+            binding.guestMobile.text = item.contactNumber
             binding.checkInDate.text = item.checkInDate
             binding.checkOutDate.text = item.checkOutDate
-            binding.totalAmount.text = "₹ ${String.format("%.2f", item.bill.totalAmount)}"
+            binding.totalAmount.text = binding.root.context.getString(
+                R.string.currency_amount_inr,
+                item.bill.totalAmount
+            )
 
             // Status badge
             setupStatusBadge(binding.statusBadge, item.status)
@@ -60,6 +65,7 @@ class AdminBookingsAdapter(
                     BookingStatus.CANCELLED -> R.color.status_cancelled
                 }
             )
+            chip.setTextColor(ContextCompat.getColor(chip.context, R.color.text_dark))
         }
     }
 

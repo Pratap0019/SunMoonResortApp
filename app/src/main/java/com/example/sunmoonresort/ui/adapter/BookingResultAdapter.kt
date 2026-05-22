@@ -2,7 +2,9 @@ package com.example.sunmoonresort.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.sunmoonresort.R
 import com.example.sunmoonresort.databinding.ItemBookingResultBinding
 import com.example.sunmoonresort.model.BookingRecord
 import com.example.sunmoonresort.model.BookingStatus
@@ -18,13 +20,17 @@ class BookingResultAdapter(
 
         fun bind(item: BookingRecord) {
             binding.bookingId.text = item.bookingId
+            binding.guestName.text = item.guestName
             binding.roomNumber.text = item.roomNumber.toString()
             binding.roomType.text = item.roomType
             binding.checkInDate.text = item.checkInDate
             binding.checkOutDate.text = item.checkOutDate
-            binding.totalAmount.text = "₹ ${String.format("%.2f", item.bill.totalAmount)}"
+            binding.totalAmount.text = binding.root.context.getString(
+                R.string.currency_amount_inr,
+                item.bill.totalAmount
+            )
 
-            // Status Badge
+            // Status badge colors intentionally match the admin booking tiles.
             setupStatusChip(binding.bookingStatus, item.status)
 
             // Cancel button visibility
@@ -44,12 +50,13 @@ class BookingResultAdapter(
             chip.text = status.name.replace("_", " ").replaceFirstChar { it.uppercase() }
             chip.setChipBackgroundColorResource(
                 when (status) {
-                    BookingStatus.CONFIRMED -> com.google.android.material.R.color.design_default_color_primary
-                    BookingStatus.CHECKED_IN -> android.R.color.holo_orange_light
-                    BookingStatus.CHECKED_OUT -> android.R.color.holo_green_light
-                    BookingStatus.CANCELLED -> android.R.color.holo_red_light
+                    BookingStatus.CONFIRMED -> R.color.status_confirmed
+                    BookingStatus.CHECKED_IN -> R.color.status_staying
+                    BookingStatus.CHECKED_OUT -> R.color.status_checked_out
+                    BookingStatus.CANCELLED -> R.color.status_cancelled
                 }
             )
+            chip.setTextColor(ContextCompat.getColor(chip.context, R.color.text_dark))
         }
     }
 

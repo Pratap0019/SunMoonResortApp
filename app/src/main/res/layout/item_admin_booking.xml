@@ -32,9 +32,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Room"
+                    android:text="@string/room_label"
                     android:textSize="11sp"
-                    android:textColor="@color/gray_light"
+                    android:textColor="@color/text_muted"
                     android:textStyle="bold"
                     android:includeFontPadding="false" />
 
@@ -94,14 +94,34 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Guest"
+                    android:text="@string/guest_label"
                     android:textSize="11sp"
-                    android:textColor="@color/gray_light"
+                    android:textColor="@color/text_muted"
                     android:textStyle="bold"
                     android:includeFontPadding="false" />
 
                 <TextView
                     android:id="@+id/guest_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:textSize="11sp"
+                    android:textColor="@color/text_dark"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:includeFontPadding="false" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/customer_mobile"
+                    android:textSize="11sp"
+                    android:textColor="@color/text_muted"
+                    android:textStyle="bold"
+                    android:includeFontPadding="false" />
+
+                <TextView
+                    android:id="@+id/guest_mobile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="11sp"
@@ -123,6 +143,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:baselineAligned="false"
             android:orientation="horizontal"
             android:layout_marginBottom="8dp">
 
@@ -135,9 +156,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Check-in"
+                    android:text="@string/check_in_label"
                     android:textSize="11sp"
-                    android:textColor="@color/gray_light"
+                    android:textColor="@color/text_muted"
                     android:textStyle="bold"
                     android:includeFontPadding="false" />
 
@@ -161,9 +182,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Check-out"
+                    android:text="@string/check_out_label"
                     android:textSize="11sp"
-                    android:textColor="@color/gray_light"
+                    android:textColor="@color/text_muted"
                     android:textStyle="bold"
                     android:includeFontPadding="false" />
 
@@ -188,9 +209,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Amount"
+                    android:text="@string/total_amount"
                     android:textSize="11sp"
-                    android:textColor="@color/gray_light"
+                    android:textColor="@color/text_muted"
                     android:textStyle="bold"
                     android:includeFontPadding="false" />
 

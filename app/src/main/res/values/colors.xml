@@ -11,7 +11,8 @@
     <!-- Text Colors -->
     <color name="text_dark">#5b3a21</color>
     <color name="text_brown">#8b6914</color>
-    <color name="text_light">#999999</color>
+    <color name="text_light">#7A746E</color>
+    <color name="text_muted">#6E6258</color>
 
     <!-- UI Colors -->
     <color name="gray_light">#EEEEEE</color>
