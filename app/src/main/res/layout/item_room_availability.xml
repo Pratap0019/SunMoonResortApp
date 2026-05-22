@@ -89,16 +89,19 @@
     <!-- Data Row -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:background="@color/white"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        android:borderBottomColor="@color/gray_light"
-        android:borderBottom="1dp">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <TextView
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@color/white"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp">
+
+            <TextView
             android:id="@+id/room_type_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -148,13 +151,19 @@
             android:textSize="9sp"
             android:gravity="center" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/available_badge"
-            android:layout_width="0dp"
-            android:layout_height="28dp"
-            android:layout_weight="1"
-            android:textSize="9sp"
-            android:gravity="center" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/available_badge"
+                android:layout_width="0dp"
+                android:layout_height="28dp"
+                android:layout_weight="1"
+                android:textSize="9sp"
+                android:gravity="center" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_light" />
     </LinearLayout>
 </LinearLayout>
 

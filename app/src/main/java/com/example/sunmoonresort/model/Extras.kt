@@ -6,7 +6,6 @@ enum class Extras(val displayName: String) {
     GymPASS("Gym Access"),
     PoolPASS("Pool Access");
 
-    fun getDisplayName(): String = displayName
 
     override fun toString(): String = displayName
 }

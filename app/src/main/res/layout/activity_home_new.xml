@@ -482,9 +482,13 @@
             android:paddingEnd="16dp"
             android:paddingTop="32dp"
             android:paddingBottom="32dp"
-            android:layout_marginTop="32dp"
-            android:borderTopColor="@color/resort_gold"
-            android:borderTop="2dp">
+            android:layout_marginTop="32dp">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/resort_gold"
+                android:layout_marginBottom="16dp" />
 
             <!-- Contact Section -->
             <LinearLayout
@@ -592,9 +596,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center_horizontal"
-                android:paddingTop="16dp"
-                android:borderTopColor="@color/resort_gold"
-                android:borderTop="1dp">
+                android:paddingTop="16dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/resort_gold"
+                    android:layout_marginBottom="16dp" />
 
                 <TextView
                     android:layout_width="wrap_content"

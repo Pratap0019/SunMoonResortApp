@@ -97,6 +97,8 @@ class AdminLoginActivity : AppCompatActivity() {
         finish()
     }
 
+    @Deprecated("Use onBackPressedDispatcher instead", ReplaceWith("onBackPressedDispatcher.onBackPressed()"))
+    @Suppress("DEPRECATION")
     override fun onBackPressed() {
         super.onBackPressed()
         finish()

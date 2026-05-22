@@ -147,7 +147,7 @@ object BookingService {
             return Result.Error("Only confirmed bookings can be cancelled.")
         }
 
-        targetBooking.setStatus(BookingStatus.CANCELLED)
+        targetBooking.status = BookingStatus.CANCELLED
         return Result.Success("Booking $bookingId has been cancelled.")
     }
 
@@ -171,7 +171,7 @@ object BookingService {
                     BookingStatus.CONFIRMED -> false
                 }
                 if (canTransition) {
-                    booking.setStatus(targetStatus)
+                    booking.status = targetStatus
                     return@forEach
                 }
             }

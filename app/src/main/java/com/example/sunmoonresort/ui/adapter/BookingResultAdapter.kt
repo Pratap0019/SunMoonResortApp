@@ -41,7 +41,7 @@ class BookingResultAdapter(
         }
 
         private fun setupStatusChip(chip: Chip, status: BookingStatus) {
-            chip.text = status.name.replace("_", " ").capitalize()
+            chip.text = status.name.replace("_", " ").replaceFirstChar { it.uppercase() }
             chip.setChipBackgroundColorResource(
                 when (status) {
                     BookingStatus.CONFIRMED -> com.google.android.material.R.color.design_default_color_primary

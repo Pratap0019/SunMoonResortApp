@@ -103,8 +103,7 @@
                 app:boxCornerRadiusTopStart="12dp"
                 app:counterEnabled="false"
                 app:errorTextColor="@color/red_error"
-                app:hintTextColor="@color/resort_gold"
-                app:textColorHint="@color/text_light">
+                app:hintTextColor="@color/resort_gold">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/password_input"
