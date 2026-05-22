@@ -49,8 +49,8 @@ class RoomAvailabilityAdapter(
             )
 
             // Availability
-            val available = (details["available"] as Long).toInt()
-            val total = (details["total"] as Long).toInt()
+            val available = (details["available"] as? Number)?.toInt() ?: 0
+            val total = (details["total"] as? Number)?.toInt() ?: 0
             setupChip(
                 binding.availableBadge,
                 if (available > 0) "$available / $total available" else "Fully Booked",
@@ -82,4 +82,3 @@ class RoomAvailabilityAdapter(
 
     override fun getItemCount() = items.size
 }
-
