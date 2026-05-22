@@ -176,4 +176,7 @@
     <string name="invoice_thanks">Thank you for choosing SunMoon Resorts!</string>
     <string name="bill_details">Bill Details</string>
     <string name="na">-</string>
+    <string name="download_bill">Download Bill</string>
+    <string name="bill_pdf_saved">Bill PDF saved to Downloads</string>
+    <string name="bill_pdf_failed">Unable to download bill PDF</string>
  </resources>

@@ -1,7 +1,14 @@
 package com.example.sunmoonresort.ui
 
+import android.content.ContentValues
 import android.content.Intent
+import android.graphics.pdf.PdfDocument
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.os.Environment
+import android.provider.MediaStore
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,6 +25,10 @@ import com.example.sunmoonresort.ui.adapter.BreakdownItem
 import com.example.sunmoonresort.ui.adapter.RoomInventoryAdapter
 import com.example.sunmoonresort.ui.adapter.RoomInventoryItem
 import com.google.android.material.snackbar.Snackbar
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
+import java.io.OutputStream
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -194,7 +205,8 @@ class AdminActivity : AppCompatActivity() {
         val dialog = AlertDialog.Builder(this)
             .setTitle(getString(R.string.bill_details))
             .setView(dialogBinding.root)
-            .setPositiveButton(android.R.string.ok, null)
+            .setPositiveButton(R.string.download_bill, null)
+            .setNegativeButton(android.R.string.cancel, null)
             .create()
 
         dialog.show()
@@ -202,6 +214,80 @@ class AdminActivity : AppCompatActivity() {
             (resources.displayMetrics.widthPixels * 0.94f).toInt(),
             android.view.ViewGroup.LayoutParams.WRAP_CONTENT
         )
+
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
+            if (downloadBillPdf(dialogBinding.root, record.bookingId)) {
+                showSuccess(getString(R.string.bill_pdf_saved))
+            } else {
+                showError(getString(R.string.bill_pdf_failed))
+            }
+        }
+    }
+
+    private fun downloadBillPdf(billView: View, bookingId: String): Boolean {
+        val pdfDocument = PdfDocument()
+        val pageWidth = 595
+        val pageHeight = 842
+        val pageMargin = 20
+
+        val widthSpec = View.MeasureSpec.makeMeasureSpec(resources.displayMetrics.widthPixels, View.MeasureSpec.EXACTLY)
+        val heightSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+        billView.measure(widthSpec, heightSpec)
+        billView.layout(0, 0, billView.measuredWidth, billView.measuredHeight)
+
+        val scale = (pageWidth - (pageMargin * 2)).toFloat() / billView.measuredWidth.toFloat()
+        val printableViewHeight = ((pageHeight - (pageMargin * 2)) / scale).toInt()
+        var currentTop = 0
+        var pageNumber = 1
+
+        while (currentTop < billView.measuredHeight) {
+            val pageInfo = PdfDocument.PageInfo.Builder(pageWidth, pageHeight, pageNumber).create()
+            val page = pdfDocument.startPage(pageInfo)
+            val canvas = page.canvas
+            canvas.translate(pageMargin.toFloat(), pageMargin.toFloat())
+            canvas.scale(scale, scale)
+            canvas.translate(0f, -currentTop.toFloat())
+            billView.draw(canvas)
+            pdfDocument.finishPage(page)
+
+            currentTop += printableViewHeight
+            pageNumber++
+        }
+
+        val fileName = "SunMoon_Bill_${bookingId}_${SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())}.pdf"
+        return try {
+            createPdfOutputStream(fileName).use { output ->
+                if (output == null) {
+                    pdfDocument.close()
+                    return false
+                }
+                pdfDocument.writeTo(output)
+            }
+            pdfDocument.close()
+            true
+        } catch (_: IOException) {
+            pdfDocument.close()
+            false
+        }
+    }
+
+    private fun createPdfOutputStream(fileName: String): OutputStream? {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            val values = ContentValues().apply {
+                put(MediaStore.MediaColumns.DISPLAY_NAME, fileName)
+                put(MediaStore.MediaColumns.MIME_TYPE, "application/pdf")
+                put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS)
+            }
+            val uri: Uri = contentResolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, values) ?: return null
+            contentResolver.openOutputStream(uri)
+        } else {
+            val downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+            if (!downloadsDir.exists()) {
+                downloadsDir.mkdirs()
+            }
+            val file = File(downloadsDir, fileName)
+            FileOutputStream(file)
+        }
     }
 }
 
