@@ -174,9 +174,14 @@
     <string name="owner_name">Bhanu Pratap Sahoo</string>
     <string name="owner_title">Owner &amp; Operator</string>
     <string name="invoice_thanks">Thank you for choosing SunMoon Resorts!</string>
+    <string name="ongoing_bookings">🟢 Ongoing Bookings</string>
+    <string name="completed_cancelled_bookings">✅ Completed / Cancelled</string>
+    <string name="no_ongoing_bookings">No ongoing bookings</string>
+    <string name="no_completed_bookings">No completed or cancelled bookings</string>
     <string name="bill_details">Bill Details</string>
     <string name="na">-</string>
     <string name="download_bill">Download Bill</string>
     <string name="bill_pdf_saved">Bill PDF saved to Downloads</string>
     <string name="bill_pdf_failed">Unable to download bill PDF</string>
+    <string name="count_format">(%1$d)</string>
  </resources>

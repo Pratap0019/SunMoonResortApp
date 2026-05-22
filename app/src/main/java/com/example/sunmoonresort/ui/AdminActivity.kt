@@ -19,6 +19,7 @@ import com.example.sunmoonresort.data.service.BookingService
 import com.example.sunmoonresort.databinding.ActivityAdminBookingsNewBinding
 import com.example.sunmoonresort.databinding.DialogBillDetailsBinding
 import com.example.sunmoonresort.model.BookingRecord
+import com.example.sunmoonresort.model.BookingStatus
 import com.example.sunmoonresort.ui.adapter.AdminBookingsAdapter
 import com.example.sunmoonresort.ui.adapter.BreakdownAdapter
 import com.example.sunmoonresort.ui.adapter.BreakdownItem
@@ -126,7 +127,8 @@ class AdminActivity : AppCompatActivity() {
 
     // UI Display Methods
     private fun setupUI() {
-        binding.bookingsList.layoutManager = LinearLayoutManager(this)
+        binding.ongoingBookingsList.layoutManager = LinearLayoutManager(this)
+        binding.completedBookingsList.layoutManager = LinearLayoutManager(this)
         binding.roomInventoryList.layoutManager = LinearLayoutManager(this)
 
         binding.backButton.setOnClickListener {
@@ -145,20 +147,49 @@ class AdminActivity : AppCompatActivity() {
     }
 
     private fun displayBookingsList(bookings: List<BookingRecord>, roomRanges: Map<Int, String>) {
-        val sortedBookings = bookings.sortedByDescending { it.checkInDate }
-        val hasBookings = sortedBookings.isNotEmpty()
+        val ongoingStatuses = setOf(BookingStatus.CONFIRMED, BookingStatus.CHECKED_IN)
+        val completedStatuses = setOf(BookingStatus.CHECKED_OUT, BookingStatus.CANCELLED)
 
-        binding.emptyStateCard.visibility = if (hasBookings) android.view.View.GONE else android.view.View.VISIBLE
-        binding.bookingsList.visibility = if (hasBookings) android.view.View.VISIBLE else android.view.View.GONE
+        val ongoing = bookings.filter { it.status in ongoingStatuses }
+            .sortedByDescending { it.checkInDate }
+        val completed = bookings.filter { it.status in completedStatuses }
+            .sortedByDescending { it.checkInDate }
 
-        binding.bookingsList.adapter = AdminBookingsAdapter(
-            items = sortedBookings,
-            onCheckIn = { checkInBooking(it.bookingId) },
-            onCheckOut = { checkOutBooking(it.bookingId) },
-            onCancel = { cancelBooking(it.bookingId) },
-            onViewBill = { showBillDetails(it) }
-        )
+        // Ongoing section
+        binding.ongoingCount.text = getString(R.string.count_format, ongoing.size)
+        if (ongoing.isEmpty()) {
+            binding.ongoingEmpty.visibility = View.VISIBLE
+            binding.ongoingBookingsList.visibility = View.GONE
+        } else {
+            binding.ongoingEmpty.visibility = View.GONE
+            binding.ongoingBookingsList.visibility = View.VISIBLE
+            binding.ongoingBookingsList.adapter = AdminBookingsAdapter(
+                items = ongoing,
+                onCheckIn = { checkInBooking(it.bookingId) },
+                onCheckOut = { checkOutBooking(it.bookingId) },
+                onCancel = { cancelBooking(it.bookingId) },
+                onViewBill = { showBillDetails(it) }
+            )
+        }
 
+        // Completed / Cancelled section
+        binding.completedCount.text = getString(R.string.count_format, completed.size)
+        if (completed.isEmpty()) {
+            binding.completedEmpty.visibility = View.VISIBLE
+            binding.completedBookingsList.visibility = View.GONE
+        } else {
+            binding.completedEmpty.visibility = View.GONE
+            binding.completedBookingsList.visibility = View.VISIBLE
+            binding.completedBookingsList.adapter = AdminBookingsAdapter(
+                items = completed,
+                onCheckIn = { checkInBooking(it.bookingId) },
+                onCheckOut = { checkOutBooking(it.bookingId) },
+                onCancel = { cancelBooking(it.bookingId) },
+                onViewBill = { showBillDetails(it) }
+            )
+        }
+
+        // Room inventory
         val roomItems = HotelData.rooms
             .sortedBy { it.number }
             .map { room ->

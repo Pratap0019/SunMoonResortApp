@@ -138,44 +138,137 @@
 
             <!-- Status Legend -->
 
-            <!-- Empty State -->
+            <!-- SECTION 1: Ongoing Bookings -->
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/empty_state_card"
+                android:id="@+id/ongoing_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp"
-                app:cardBackgroundColor="@color/white"
-                android:layout_marginBottom="20dp"
-                android:visibility="gone">
+                app:cardBackgroundColor="@color/white">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal"
-                    android:padding="32dp">
+                    android:orientation="vertical">
 
+                    <!-- Section Header -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@color/status_staying"
+                        android:gravity="center_vertical"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/TextSunMoonResortHeading"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/ongoing_bookings"
+                            android:textColor="@color/text_dark"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/ongoing_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/text_dark"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <!-- Empty state for ongoing -->
                     <TextView
-                        style="@style/TextSunMoonResortHeading"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/ongoing_empty"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/no_bookings_yet"
-                        android:textSize="16sp"
-                        android:textColor="@color/text_dark"
-                        android:textStyle="bold" />
+                        android:gravity="center"
+                        android:padding="24dp"
+                        android:text="@string/no_ongoing_bookings"
+                        android:textColor="@color/text_light"
+                        android:textSize="13sp"
+                        android:visibility="gone" />
+
+                    <!-- Ongoing RecyclerView -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/ongoing_bookings_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:nestedScrollingEnabled="true"
+                        android:scrollbars="vertical"
+                        tools:listitem="@layout/item_admin_booking" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Bookings RecyclerView -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/bookings_list"
+            <!-- SECTION 2: Completed / Cancelled Bookings -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/completed_card"
                 android:layout_width="match_parent"
-                android:layout_height="320dp"
-                android:nestedScrollingEnabled="true"
-                android:scrollbars="vertical"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                tools:listitem="@layout/item_admin_booking" />
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Section Header -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@color/gray_light"
+                        android:gravity="center_vertical"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/TextSunMoonResortHeading"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/completed_cancelled_bookings"
+                            android:textColor="@color/text_dark"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/completed_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/text_dark"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <!-- Empty state for completed -->
+                    <TextView
+                        android:id="@+id/completed_empty"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="24dp"
+                        android:text="@string/no_completed_bookings"
+                        android:textColor="@color/text_light"
+                        android:textSize="13sp"
+                        android:visibility="gone" />
+
+                    <!-- Completed RecyclerView -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/completed_bookings_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:nestedScrollingEnabled="true"
+                        android:scrollbars="vertical"
+                        tools:listitem="@layout/item_admin_booking" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
             <!-- Full Room Inventory -->
             <com.google.android.material.card.MaterialCardView

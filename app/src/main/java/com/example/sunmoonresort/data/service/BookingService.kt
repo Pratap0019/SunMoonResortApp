@@ -1,5 +1,6 @@
 package com.example.sunmoonresort.data.service
 
+import com.example.sunmoonresort.data.BookingLocalStore
 import com.example.sunmoonresort.data.HotelData
 import com.example.sunmoonresort.data.SunMoonResort
 import com.example.sunmoonresort.model.Bill
@@ -12,7 +13,6 @@ import com.example.sunmoonresort.model.Room
 import com.example.sunmoonresort.model.RoomType
 import java.util.UUID
 import org.threeten.bp.LocalDate
-import org.threeten.bp.temporal.ChronoUnit
 
 object BookingService {
 
@@ -60,7 +60,7 @@ object BookingService {
             val existingCheckIn = LocalDate.parse(booking.checkInDate)
             val existingCheckOut = LocalDate.parse(booking.checkOutDate)
             return requestedCheckIn.isBefore(existingCheckOut) && requestedCheckOut.isAfter(existingCheckIn)
-        } catch (e: Exception) {
+        } catch (_: Exception) {
             // Fallback to string comparison if LocalDate parsing fails
             return booking.checkInDate < requestedCheckOut.toString() &&
                     booking.checkOutDate > requestedCheckIn.toString()
@@ -114,7 +114,7 @@ object BookingService {
             status = BookingStatus.CONFIRMED
         )
         HotelData.bookings.computeIfAbsent(roomNumber) { mutableListOf() }.add(bookingDetails)
-        com.example.sunmoonresort.data.BookingLocalStore.saveBookings(HotelData.bookings)
+        BookingLocalStore.saveBookings(HotelData.bookings)
         return bookingId
     }
 
@@ -149,7 +149,7 @@ object BookingService {
         }
 
         targetBooking.status = BookingStatus.CANCELLED
-        com.example.sunmoonresort.data.BookingLocalStore.saveBookings(HotelData.bookings)
+        BookingLocalStore.saveBookings(HotelData.bookings)
         return Result.Success("Booking $bookingId has been cancelled.")
     }
 
@@ -162,24 +162,26 @@ object BookingService {
 
     /**
      * Admin: Update booking status with state machine rules.
+     * Returns true only when the transition was successfully applied.
      */
     fun updateBookingStatus(bookingId: String, targetStatus: BookingStatus): Boolean {
         HotelData.bookings.values.forEach { bookings ->
-            bookings.firstOrNull { it.bookingId == bookingId }?.let { booking ->
-                val canTransition = when (targetStatus) {
-                    BookingStatus.CANCELLED -> booking.status == BookingStatus.CONFIRMED
-                    BookingStatus.CHECKED_IN -> booking.status == BookingStatus.CONFIRMED
-                    BookingStatus.CHECKED_OUT -> booking.status == BookingStatus.CHECKED_IN
-                    BookingStatus.CONFIRMED -> false
-                }
-                if (canTransition) {
-                    booking.status = targetStatus
-                    com.example.sunmoonresort.data.BookingLocalStore.saveBookings(HotelData.bookings)
-                    return@forEach
-                }
+            val booking = bookings.firstOrNull { it.bookingId == bookingId } ?: return@forEach
+            val canTransition = when (targetStatus) {
+                BookingStatus.CANCELLED -> booking.status == BookingStatus.CONFIRMED
+                BookingStatus.CHECKED_IN -> booking.status == BookingStatus.CONFIRMED
+                BookingStatus.CHECKED_OUT -> booking.status == BookingStatus.CHECKED_IN
+                BookingStatus.CONFIRMED -> false
+            }
+            return if (canTransition) {
+                booking.status = targetStatus
+                BookingLocalStore.saveBookings(HotelData.bookings)
+                true
+            } else {
+                false
             }
         }
-        return true
+        return false // Booking not found
     }
 
     /**
