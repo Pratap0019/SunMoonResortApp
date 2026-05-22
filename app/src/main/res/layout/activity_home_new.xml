@@ -47,11 +47,16 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/header_decoration" />
 
-                <Button
+                <ImageButton
                     android:id="@+id/admin_btn"
-                    style="@style/Widget.SunMoonResort.HeaderNavButton"
-                    android:text="@string/admin"
-                    android:textAllCaps="true" />
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:background="@color/white"
+                    android:contentDescription="@string/admin"
+                    android:padding="8dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_admin_panel"
+                    app:tint="@color/resort_gold_dark" />
             </LinearLayout>
         </FrameLayout>
 
