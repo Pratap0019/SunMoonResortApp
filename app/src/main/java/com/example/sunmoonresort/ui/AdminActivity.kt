@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.sunmoonresort.R
 import com.example.sunmoonresort.data.HotelData
 import com.example.sunmoonresort.data.service.AdminService
 import com.example.sunmoonresort.data.service.BookingService
@@ -17,6 +18,9 @@ import com.example.sunmoonresort.ui.adapter.BreakdownItem
 import com.example.sunmoonresort.ui.adapter.RoomInventoryAdapter
 import com.example.sunmoonresort.ui.adapter.RoomInventoryItem
 import com.google.android.material.snackbar.Snackbar
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class AdminActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAdminBookingsNewBinding
@@ -167,11 +171,15 @@ class AdminActivity : AppCompatActivity() {
     private fun showBillDetails(record: BookingRecord) {
         val dialogBinding = DialogBillDetailsBinding.inflate(layoutInflater)
 
+        dialogBinding.billingDate.text = SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).format(Date())
         dialogBinding.guestName.text = record.guestName
         dialogBinding.contactNumber.text = record.contactNumber
-        dialogBinding.roomInfo.text = "${record.roomNumber} (${record.roomType})"
-        dialogBinding.duration.text = "${record.checkInDate} to ${record.checkOutDate}"
-        dialogBinding.totalAmount.text = String.format("Rs %.2f", record.bill.totalAmount)
+        dialogBinding.roomNumber.text = record.roomNumber.toString()
+        dialogBinding.roomType.text = record.roomType
+        dialogBinding.durationDays.text = getString(R.string.duration_days_format, record.daysStayed)
+        dialogBinding.checkInDate.text = record.checkInDate.ifBlank { getString(R.string.na) }
+        dialogBinding.checkOutDate.text = record.checkOutDate.ifBlank { getString(R.string.na) }
+        dialogBinding.totalAmount.text = String.format(Locale.getDefault(), "Rs %.2f", record.bill.totalAmount)
 
         val rows = record.bill.breakdown.map { (itemName, amount) ->
             BreakdownItem(
@@ -183,11 +191,17 @@ class AdminActivity : AppCompatActivity() {
         dialogBinding.breakdownItems.layoutManager = LinearLayoutManager(this)
         dialogBinding.breakdownItems.adapter = BreakdownAdapter(rows)
 
-        AlertDialog.Builder(this)
-            .setTitle("Bill Details")
+        val dialog = AlertDialog.Builder(this)
+            .setTitle(getString(R.string.bill_details))
             .setView(dialogBinding.root)
             .setPositiveButton(android.R.string.ok, null)
-            .show()
+            .create()
+
+        dialog.show()
+        dialog.window?.setLayout(
+            (resources.displayMetrics.widthPixels * 0.94f).toInt(),
+            android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+        )
     }
 }
 
