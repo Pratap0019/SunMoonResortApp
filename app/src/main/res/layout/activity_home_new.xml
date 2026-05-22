@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/background_off_white">
 
     <LinearLayout
@@ -15,48 +15,49 @@
         <FrameLayout
             android:id="@+id/header_container"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="40dp"
             android:background="@drawable/header_bg">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
+                android:layout_height="38dp"
                 android:gravity="center_vertical"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp">
+                android:orientation="horizontal"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp">
 
                 <!-- Left: Logo -->
                 <ImageView
                     android:id="@+id/logo_header"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:src="@drawable/sunmoon_logo"
+                    android:layout_width="170dp"
+                    android:layout_height="40dp"
                     android:contentDescription="@string/logo_description"
-                    android:scaleType="centerInside" />
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/sunmoon_logo" />
 
                 <!-- Center: Decorative Image -->
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="80dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/header_decoration"
-                    android:contentDescription="@string/decoration_header"
-                    android:scaleType="centerCrop" />
 
                 <!-- Right: Admin Button -->
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/decoration_header"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/header_decoration" />
+
                 <Button
                     android:id="@+id/admin_btn"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:text="@string/admin"
-                    android:textSize="9sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/resort_gold"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="75dp"
+                    android:layout_height="40dp"
                     android:background="@color/white"
-                    android:textAllCaps="true"
                     android:letterSpacing="0.1"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+                    android:text="@string/admin"
+                    android:textAllCaps="true"
+                    android:textColor="@color/resort_gold"
+                    android:textSize="8sp"
+                    android:textStyle="bold" />
             </LinearLayout>
         </FrameLayout>
 
@@ -64,75 +65,75 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:gravity="center_horizontal"
-            android:paddingTop="24dp"
+            android:orientation="vertical"
+            android:paddingTop="5dp"
             android:paddingBottom="24dp">
 
             <!-- Resort Logo -->
             <ImageView
                 android:id="@+id/resort_logo"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:src="@drawable/sunmoon_resort_logo"
+                android:layout_height="222dp"
                 android:contentDescription="@string/resort_logo_desc"
-                android:scaleType="centerInside"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp" />
+                android:paddingStart="1dp"
+                android:paddingEnd="0dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/sunmoon_resort_logo" />
 
             <!-- Hotel Description Card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:layout_marginEnd="12dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="12dp"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="12dp"
-                app:cardElevation="4dp"
-                app:cardBackgroundColor="@color/white">
+                app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:gravity="center_horizontal"
-                    android:padding="20dp">
+                    android:orientation="vertical"
+                    android:padding="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/welcome_title"
+                        android:textColor="@color/resort_gold"
                         android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/resort_gold" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/welcome_description"
-                        android:textSize="14sp"
-                        android:textColor="@color/text_dark"
-                        android:lineSpacingMultiplier="1.4"
+                        android:layout_marginTop="12dp"
                         android:gravity="center"
-                        android:layout_marginTop="12dp" />
+                        android:lineSpacingMultiplier="1.4"
+                        android:text="@string/welcome_description"
+                        android:textColor="@color/text_dark"
+                        android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
                         android:text="@string/owner_credit"
-                        android:textSize="12sp"
                         android:textColor="@color/text_dark"
-                        android:layout_marginTop="12dp" />
+                        android:textSize="12sp" />
 
                     <!-- Owner Image -->
                     <ImageView
                         android:id="@+id/owner_image"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
-                        android:src="@drawable/owner_photo"
+                        android:layout_marginTop="16dp"
                         android:contentDescription="@string/owner_desc"
                         android:scaleType="centerCrop"
-                        android:layout_marginTop="16dp" />
+                        android:src="@drawable/owner_photo" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
@@ -141,8 +142,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="24dp">
+            android:layout_marginTop="24dp"
+            android:orientation="vertical">
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/carousel_viewpager"
@@ -153,27 +154,27 @@
                 android:id="@+id/carousel_indicator"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:tabIndicatorColor="@color/resort_gold"
-                app:tabGravity="center" />
+                app:tabGravity="center"
+                app:tabIndicatorColor="@color/resort_gold" />
         </LinearLayout>
 
         <!-- Info Section -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
             android:layout_marginTop="32dp"
-            android:layout_marginBottom="32dp">
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="32dp"
+            android:orientation="vertical">
 
             <!-- Room Availability Card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="12dp"
-                app:cardElevation="4dp"
-                app:cardBackgroundColor="@color/white">
+                app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -184,9 +185,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
                         android:background="@color/text_dark"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp">
 
@@ -194,9 +195,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/room_availability_overview"
+                            android:textColor="@color/white"
                             android:textSize="16sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/white" />
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                     <!-- Room Availability RecyclerView -->
@@ -213,10 +214,10 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="4dp"
+                android:layout_marginTop="20dp"
                 app:cardBackgroundColor="@color/white"
-                android:layout_marginTop="20dp">
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -227,9 +228,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
                         android:background="@color/text_dark"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp">
 
@@ -237,9 +238,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/pricing_information"
+                            android:textColor="@color/white"
                             android:textSize="16sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/white" />
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                     <!-- Pricing Content -->
@@ -259,11 +260,11 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
                                 android:text="@string/room_rates"
-                                android:textSize="12sp"
-                                android:textStyle="bold"
                                 android:textColor="@color/resort_gold"
-                                android:layout_marginBottom="8dp" />
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
 
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/room_rates_list"
@@ -276,9 +277,9 @@
                         <View
                             android:layout_width="1dp"
                             android:layout_height="match_parent"
-                            android:background="@color/gray_light"
                             android:layout_marginStart="12dp"
-                            android:layout_marginEnd="12dp" />
+                            android:layout_marginEnd="12dp"
+                            android:background="@color/gray_light" />
 
                         <!-- Extras Column -->
                         <LinearLayout
@@ -291,11 +292,11 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
                                 android:text="@string/extras"
-                                android:textSize="12sp"
-                                android:textStyle="bold"
                                 android:textColor="@color/resort_gold"
-                                android:layout_marginBottom="8dp" />
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
 
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/extras_list"
@@ -308,9 +309,9 @@
                         <View
                             android:layout_width="1dp"
                             android:layout_height="match_parent"
-                            android:background="@color/gray_light"
                             android:layout_marginStart="12dp"
-                            android:layout_marginEnd="12dp" />
+                            android:layout_marginEnd="12dp"
+                            android:background="@color/gray_light" />
 
                         <!-- Pet Fees Column -->
                         <LinearLayout
@@ -323,11 +324,11 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
                                 android:text="@string/pet_fees"
-                                android:textSize="12sp"
-                                android:textStyle="bold"
                                 android:textColor="@color/resort_gold"
-                                android:layout_marginBottom="8dp" />
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
 
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/pet_fees_list"
@@ -344,10 +345,10 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="4dp"
+                android:layout_marginTop="20dp"
                 app:cardBackgroundColor="@color/white"
-                android:layout_marginTop="20dp">
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -358,9 +359,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
                         android:background="@color/text_dark"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp">
 
@@ -368,9 +369,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/search_your_booking"
+                            android:textColor="@color/white"
                             android:textSize="16sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/white" />
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                     <!-- Search Form -->
@@ -383,54 +384,54 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/mobile_number"
-                            android:textSize="14sp"
-                            android:textColor="@color/text_dark"
                             android:layout_marginBottom="8dp"
+                            android:text="@string/mobile_number"
+                            android:textColor="@color/text_dark"
+                            android:textSize="14sp"
                             android:textStyle="bold" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical"
+                            android:layout_marginBottom="16dp"
                             android:background="@drawable/edit_text_background"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
                             android:paddingStart="12dp"
-                            android:paddingEnd="12dp"
-                            android:layout_marginBottom="16dp">
+                            android:paddingEnd="12dp">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
                                 android:text="+91"
-                                android:textSize="14sp"
                                 android:textColor="@color/text_dark"
-                                android:textStyle="bold"
-                                android:layout_marginEnd="8dp" />
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
 
                             <EditText
                                 android:id="@+id/mobile_search_input"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
+                                android:background="@null"
+                                android:hint="@string/ten_digit_mobile"
                                 android:inputType="phone"
                                 android:maxLength="10"
-                                android:hint="@string/ten_digit_mobile"
-                                android:background="@null"
-                                android:textSize="14sp"
                                 android:textColor="@color/text_dark"
-                                android:textColorHint="@color/gray_light" />
+                                android:textColorHint="@color/gray_light"
+                                android:textSize="14sp" />
                         </LinearLayout>
 
                         <Button
                             android:id="@+id/search_booking_btn"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
-                            android:text="@string/search_booking"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
                             android:background="@color/resort_gold"
-                            android:textColor="@color/white" />
+                            android:text="@string/search_booking"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                     <!-- Search Results -->
@@ -448,8 +449,8 @@
                             android:id="@+id/search_results_list"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:nestedScrollingEnabled="false"
                             android:layout_marginTop="16dp"
+                            android:nestedScrollingEnabled="false"
                             tools:listitem="@layout/item_booking_result" />
                     </LinearLayout>
                 </LinearLayout>
@@ -461,165 +462,165 @@
             android:id="@+id/book_stay_cta"
             android:layout_width="200dp"
             android:layout_height="48dp"
-            android:text="@string/book_stay_now"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:background="@color/resort_gold"
-            android:textColor="@color/white"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
-            app:cornerRadius="8dp"
-            android:elevation="4dp" />
+            android:background="@color/resort_gold"
+            android:elevation="4dp"
+            android:text="@string/book_stay_now"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:cornerRadius="8dp" />
 
         <!-- Footer -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_marginTop="32dp"
             android:background="@color/background_off_white"
+            android:orientation="vertical"
             android:paddingStart="16dp"
-            android:paddingEnd="16dp"
             android:paddingTop="32dp"
-            android:paddingBottom="32dp"
-            android:layout_marginTop="32dp">
+            android:paddingEnd="16dp"
+            android:paddingBottom="32dp">
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="@color/resort_gold"
-                android:layout_marginBottom="16dp" />
+                android:layout_marginBottom="16dp"
+                android:background="@color/resort_gold" />
 
             <!-- Contact Section -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="24dp">
+                android:layout_marginBottom="24dp"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
                     android:text="@string/contact_us"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
                     android:textColor="@color/resort_gold"
-                    android:layout_marginBottom="12dp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/phone_label"
+                    android:textColor="@color/text_dark"
                     android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/text_dark" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
                     android:text="@string/phone_number"
-                    android:textSize="12sp"
                     android:textColor="@color/text_brown"
-                    android:layout_marginBottom="12dp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/email_label"
+                    android:textColor="@color/text_dark"
                     android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/text_dark" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/email_contact"
-                    android:textSize="12sp"
-                    android:textColor="@color/text_brown" />
+                    android:textColor="@color/text_brown"
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <!-- Services Section -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="24dp">
+                android:layout_marginBottom="24dp"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
                     android:text="@string/our_services"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
                     android:textColor="@color/resort_gold"
-                    android:layout_marginBottom="12dp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="✓ @string/luxury_rooms"
-                    android:textSize="12sp"
-                    android:textColor="@color/text_brown" />
+                    android:textColor="@color/text_brown"
+                    android:textSize="12sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="✓ @string/sea_view"
-                    android:textSize="12sp"
-                    android:textColor="@color/text_brown" />
+                    android:textColor="@color/text_brown"
+                    android:textSize="12sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="✓ @string/wifi_amenities"
-                    android:textSize="12sp"
-                    android:textColor="@color/text_brown" />
+                    android:textColor="@color/text_brown"
+                    android:textSize="12sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="✓ @string/room_service"
-                    android:textSize="12sp"
-                    android:textColor="@color/text_brown" />
+                    android:textColor="@color/text_brown"
+                    android:textSize="12sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="✓ @string/pet_friendly"
-                    android:textSize="12sp"
-                    android:textColor="@color/text_brown" />
+                    android:textColor="@color/text_brown"
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <!-- Footer Bottom -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:gravity="center_horizontal"
+                android:orientation="vertical"
                 android:paddingTop="16dp">
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/resort_gold"
-                    android:layout_marginBottom="16dp" />
+                    android:layout_marginBottom="16dp"
+                    android:background="@color/resort_gold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/footer_copyright"
-                    android:textSize="12sp"
-                    android:textColor="@color/text_brown"
+                    android:layout_marginBottom="8dp"
                     android:gravity="center"
-                    android:layout_marginBottom="8dp" />
+                    android:text="@string/footer_copyright"
+                    android:textColor="@color/text_brown"
+                    android:textSize="12sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:text="@string/footer_tagline"
-                    android:textSize="11sp"
                     android:textColor="@color/text_brown"
-                    android:gravity="center" />
+                    android:textSize="11sp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
