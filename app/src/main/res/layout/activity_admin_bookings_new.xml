@@ -45,16 +45,9 @@
 
                 <Button
                     android:id="@+id/back_button"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:layout_width="84dp"
-                    android:layout_height="40dp"
-                    android:background="@color/white"
-                    android:letterSpacing="0.1"
+                    style="@style/Widget.SunMoonResort.HeaderNavButton"
                     android:text="@string/back"
-                    android:textAllCaps="true"
-                    android:textColor="@color/resort_gold_dark"
-                    android:textSize="11sp"
-                    android:textStyle="bold" />
+                    android:textAllCaps="true" />
             </LinearLayout>
         </FrameLayout>
 
@@ -125,6 +118,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        style="@style/TextSunMoonResortHeading"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/bookings_information"
@@ -143,53 +137,6 @@
             </LinearLayout>
 
             <!-- Status Legend -->
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scrollbars="none"
-                android:layout_marginBottom="16dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <com.google.android.material.chip.Chip
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/confirmed"
-                        android:textSize="10sp"
-                        android:layout_marginEnd="8dp"
-                        app:chipBackgroundColor="@color/status_confirmed"
-                        app:chipStrokeColor="@color/status_confirmed" />
-
-                    <com.google.android.material.chip.Chip
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/serving_guests"
-                        android:textSize="10sp"
-                        android:layout_marginEnd="8dp"
-                        app:chipBackgroundColor="@color/status_staying"
-                        app:chipStrokeColor="@color/status_staying" />
-
-                    <com.google.android.material.chip.Chip
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/checked_out"
-                        android:textSize="10sp"
-                        android:layout_marginEnd="8dp"
-                        app:chipBackgroundColor="@color/status_checked_out"
-                        app:chipStrokeColor="@color/status_checked_out" />
-
-                    <com.google.android.material.chip.Chip
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/cancelled"
-                        android:textSize="10sp"
-                        app:chipBackgroundColor="@color/status_cancelled"
-                        app:chipStrokeColor="@color/status_cancelled" />
-                </LinearLayout>
-            </HorizontalScrollView>
 
             <!-- Empty State -->
             <com.google.android.material.card.MaterialCardView
@@ -210,6 +157,7 @@
                     android:padding="32dp">
 
                     <TextView
+                        style="@style/TextSunMoonResortHeading"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/no_bookings_yet"
@@ -254,6 +202,7 @@
                         android:paddingEnd="16dp">
 
                         <TextView
+                            style="@style/TextSunMoonResortHeading"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/full_room_inventory"

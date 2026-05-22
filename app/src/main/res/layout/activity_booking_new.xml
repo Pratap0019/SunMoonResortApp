@@ -45,16 +45,9 @@
 
                 <Button
                     android:id="@+id/admin_btn"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:layout_width="75dp"
-                    android:layout_height="40dp"
-                    android:background="@color/white"
-                    android:letterSpacing="0.1"
+                    style="@style/Widget.SunMoonResort.HeaderNavButton"
                     android:text="@string/admin"
-                    android:textAllCaps="true"
-                    android:textColor="@color/resort_gold"
-                    android:textSize="8sp"
-                    android:textStyle="bold" />
+                    android:textAllCaps="true" />
             </LinearLayout>
         </FrameLayout>
 
@@ -67,6 +60,7 @@
 
             <!-- Page Title -->
             <TextView
+                style="@style/TextSunMoonResortHeading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/book_your_stay"
@@ -464,6 +458,7 @@
                     android:padding="20dp">
 
                     <TextView
+                        style="@style/TextSunMoonResortHeading"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/price_breakdown"
@@ -487,6 +482,7 @@
                             android:padding="12dp">
 
                             <TextView
+                                style="@style/TextSunMoonResortHeading"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/assigned_room"
@@ -569,6 +565,7 @@
                             android:layout_marginBottom="16dp" />
 
                         <TextView
+                            style="@style/TextSunMoonResortHeading"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/guest_details"

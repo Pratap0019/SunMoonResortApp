@@ -15,5 +15,6 @@
         <!-- Text colors for dark mode -->
         <item name="android:textColorPrimary">@color/white</item>
         <item name="android:textColorSecondary">@color/background_off_white</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
     </style>
 </resources>

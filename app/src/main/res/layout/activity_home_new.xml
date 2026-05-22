@@ -49,16 +49,9 @@
 
                 <Button
                     android:id="@+id/admin_btn"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:layout_width="84dp"
-                    android:layout_height="40dp"
-                    android:background="@color/white"
-                    android:letterSpacing="0.1"
+                    style="@style/Widget.SunMoonResort.HeaderNavButton"
                     android:text="@string/admin"
-                    android:textAllCaps="true"
-                    android:textColor="@color/resort_gold_dark"
-                    android:textSize="11sp"
-                    android:textStyle="bold" />
+                    android:textAllCaps="true" />
             </LinearLayout>
         </FrameLayout>
 
@@ -101,6 +94,7 @@
                     android:padding="5dp">
 
                     <TextView
+                        style="@style/TextSunMoonResortHeading"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/welcome_title"
@@ -193,6 +187,7 @@
                         android:paddingEnd="16dp">
 
                         <TextView
+                            style="@style/TextSunMoonResortHeading"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/room_availability_overview"
@@ -336,6 +331,7 @@
                         android:paddingEnd="16dp">
 
                         <TextView
+                            style="@style/TextSunMoonResortHeading"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/pricing_information"
@@ -359,6 +355,7 @@
                             android:orientation="vertical">
 
                             <TextView
+                                style="@style/TextSunMoonResortHeading"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="8dp"
@@ -391,6 +388,7 @@
                             android:paddingStart="12dp">
 
                             <TextView
+                                style="@style/TextSunMoonResortHeading"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="8dp"
@@ -423,6 +421,7 @@
                             android:paddingStart="12dp">
 
                             <TextView
+                                style="@style/TextSunMoonResortHeading"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="8dp"
@@ -467,6 +466,7 @@
                         android:paddingEnd="16dp">
 
                         <TextView
+                            style="@style/TextSunMoonResortHeading"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/search_your_booking"
