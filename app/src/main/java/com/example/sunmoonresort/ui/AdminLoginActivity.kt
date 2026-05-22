@@ -45,7 +45,7 @@ class AdminLoginActivity : AppCompatActivity() {
 
         // Back button click listener
         binding.backButton.setOnClickListener {
-            finish()
+            navigateBackOrHome()
         }
 
         // Clear error when user starts typing
@@ -91,17 +91,17 @@ class AdminLoginActivity : AppCompatActivity() {
     }
 
     private fun navigateToAdminPanel() {
-        val intent = Intent(this, AdminActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        startActivity(intent)
+        startActivity(Intent(this, AdminActivity::class.java))
         finish()
     }
 
-    @Deprecated("Use onBackPressedDispatcher instead", ReplaceWith("onBackPressedDispatcher.onBackPressed()"))
-    @Suppress("DEPRECATION")
-    override fun onBackPressed() {
-        super.onBackPressed()
-        finish()
+    private fun navigateBackOrHome() {
+        if (isTaskRoot) {
+            startActivity(Intent(this, HomeActivity::class.java))
+            finish()
+            return
+        }
+        onBackPressedDispatcher.onBackPressed()
     }
 }
 

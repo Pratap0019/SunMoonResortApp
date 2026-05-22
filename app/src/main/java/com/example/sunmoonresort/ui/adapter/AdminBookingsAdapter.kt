@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.sunmoonresort.R
 import com.example.sunmoonresort.databinding.ItemAdminBookingBinding
 import com.example.sunmoonresort.model.BookingRecord
 import com.example.sunmoonresort.model.BookingStatus
@@ -46,17 +47,17 @@ class AdminBookingsAdapter(
         private fun setupStatusBadge(chip: com.google.android.material.chip.Chip, status: BookingStatus) {
             chip.text = when (status) {
                 BookingStatus.CONFIRMED -> "Confirmed"
-                BookingStatus.CHECKED_IN -> "Serving"
+                BookingStatus.CHECKED_IN -> "Checked In"
                 BookingStatus.CHECKED_OUT -> "Checked Out"
                 BookingStatus.CANCELLED -> "Cancelled"
             }
 
             chip.setChipBackgroundColorResource(
                 when (status) {
-                    BookingStatus.CONFIRMED -> com.google.android.material.R.color.design_default_color_primary
-                    BookingStatus.CHECKED_IN -> android.R.color.holo_orange_light
-                    BookingStatus.CHECKED_OUT -> android.R.color.holo_green_light
-                    BookingStatus.CANCELLED -> android.R.color.holo_red_light
+                    BookingStatus.CONFIRMED -> R.color.status_confirmed
+                    BookingStatus.CHECKED_IN -> R.color.status_staying
+                    BookingStatus.CHECKED_OUT -> R.color.status_checked_out
+                    BookingStatus.CANCELLED -> R.color.status_cancelled
                 }
             )
         }

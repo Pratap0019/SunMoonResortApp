@@ -345,7 +345,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:padding="16dp">
+                        android:padding="10dp">
 
                         <!-- Room Rates Column -->
                         <LinearLayout
@@ -361,7 +361,7 @@
                                 android:layout_marginBottom="8dp"
                                 android:text="@string/room_rates"
                                 android:textColor="@color/resort_gold"
-                                android:textSize="12sp"
+                                android:textSize="11sp"
                                 android:textStyle="bold" />
 
                             <androidx.recyclerview.widget.RecyclerView
@@ -375,8 +375,8 @@
                         <View
                             android:layout_width="1dp"
                             android:layout_height="match_parent"
-                            android:layout_marginStart="12dp"
-                            android:layout_marginEnd="12dp"
+                            android:layout_marginStart="6dp"
+                            android:layout_marginEnd="6dp"
                             android:background="@color/gray_light" />
 
                         <!-- Extras Column -->
@@ -385,7 +385,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:orientation="vertical"
-                            android:paddingStart="12dp">
+                            android:paddingStart="4dp"
+                            android:paddingEnd="2dp">
 
                             <TextView
                                 style="@style/TextSunMoonResortHeading"
@@ -394,7 +395,7 @@
                                 android:layout_marginBottom="8dp"
                                 android:text="@string/extras"
                                 android:textColor="@color/resort_gold"
-                                android:textSize="12sp"
+                                android:textSize="11sp"
                                 android:textStyle="bold" />
 
                             <androidx.recyclerview.widget.RecyclerView
@@ -408,8 +409,8 @@
                         <View
                             android:layout_width="1dp"
                             android:layout_height="match_parent"
-                            android:layout_marginStart="12dp"
-                            android:layout_marginEnd="12dp"
+                            android:layout_marginStart="6dp"
+                            android:layout_marginEnd="6dp"
                             android:background="@color/gray_light" />
 
                         <!-- Pet Fees Column -->
@@ -418,7 +419,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:orientation="vertical"
-                            android:paddingStart="12dp">
+                            android:paddingStart="4dp"
+                            android:paddingEnd="2dp">
 
                             <TextView
                                 style="@style/TextSunMoonResortHeading"
@@ -427,7 +429,7 @@
                                 android:layout_marginBottom="8dp"
                                 android:text="@string/pet_fees"
                                 android:textColor="@color/resort_gold"
-                                android:textSize="12sp"
+                                android:textSize="11sp"
                                 android:textStyle="bold" />
 
                             <androidx.recyclerview.widget.RecyclerView

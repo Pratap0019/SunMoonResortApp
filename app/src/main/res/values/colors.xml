@@ -22,14 +22,14 @@
     <color name="yellow_warning">#ffc107</color>
 
     <!-- Status Badge Colors -->
-    <color name="status_confirmed">#0d6efd</color>
-    <color name="status_staying">#ffc107</color>
-    <color name="status_checked_out">#198754</color>
-    <color name="status_cancelled">#dc3545</color>
+    <color name="status_confirmed">#BBDEFB</color>
+    <color name="status_staying">#C8E6C9</color>
+    <color name="status_checked_out">#FFF59D</color>
+    <color name="status_cancelled">#FFCDD2</color>
 
     <!-- Badge Colors -->
-    <color name="badge_available">#B8860B</color>
-    <color name="badge_booked">#C0C0C0</color>
+    <color name="badge_available">#C8E6C9</color>
+    <color name="badge_booked">#FFCDD2</color>
 
     <!-- Booking Page Colors -->
     <color name="gray_booking_bg">#DCDCDC</color>

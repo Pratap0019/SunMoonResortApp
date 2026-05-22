@@ -3,6 +3,7 @@ package com.example.sunmoonresort.ui.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.sunmoonresort.R
 import com.example.sunmoonresort.databinding.ItemRoomInventoryBinding
 import com.example.sunmoonresort.model.Room
 
@@ -27,8 +28,8 @@ class RoomInventoryAdapter(
             val isBooked = item.bookedDates != "-"
             binding.statusChip.text = if (isBooked) "Booked" else "Available"
             binding.statusChip.setChipBackgroundColorResource(
-                if (isBooked) android.R.color.darker_gray
-                else com.google.android.material.R.color.design_default_color_primary
+                if (isBooked) R.color.badge_booked
+                else R.color.badge_available
             )
         }
     }

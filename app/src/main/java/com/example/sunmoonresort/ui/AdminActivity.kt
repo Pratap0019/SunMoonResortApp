@@ -130,7 +130,7 @@ class AdminActivity : AppCompatActivity() {
         binding.roomInventoryList.layoutManager = LinearLayoutManager(this)
 
         binding.backButton.setOnClickListener {
-            finish()
+            navigateBackOrHome()
         }
 
         binding.newBookingBtn.setOnClickListener {
@@ -288,6 +288,15 @@ class AdminActivity : AppCompatActivity() {
             val file = File(downloadsDir, fileName)
             FileOutputStream(file)
         }
+    }
+
+    private fun navigateBackOrHome() {
+        if (isTaskRoot) {
+            startActivity(Intent(this, HomeActivity::class.java))
+            finish()
+            return
+        }
+        onBackPressedDispatcher.onBackPressed()
     }
 }
 
