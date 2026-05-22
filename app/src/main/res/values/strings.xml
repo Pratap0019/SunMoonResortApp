@@ -37,20 +37,13 @@
     <string name="search_booking">Search Booking</string>
 
     <!-- Booking Results -->
-    <string name="booking_id">Booking ID</string>
-    <string name="room_no">Room No</string>
     <string name="check_in">Check In</string>
     <string name="check_out">Check Out</string>
-    <string name="status">Status</string>
-    <string name="total_amount">Total (₹)</string>
-    <string name="action">Action</string>
     <string name="cancel">Cancel</string>
 
     <!-- CTA Buttons -->
     <string name="book_stay_now">Book Stay Now</string>
     <string name="book_your_stay">Book Your Stay</string>
-    <string name="view_rooms">View Rooms</string>
-    <string name="explore_amenities">Explore Amenities</string>
 
     <!-- Footer -->
     <string name="contact_us">Contact Us</string>
@@ -60,41 +53,15 @@
     <string name="email_contact">bhanuofficial019@gmail.com</string>
     <string name="email_reservations">booking@sunmoonresort.com</string>
 
-    <string name="visit_us">Visit Us</string>
-    <string name="main_resort">Main Resort</string>
-    <string name="resort_location">Coastal Paradise Zone, Beachfront Avenue 123, Coastal City</string>
-    <string name="hours">Hours: 24/7 Guest Services</string>
-
     <string name="our_services">Our Services</string>
     <string name="luxury_rooms">Luxury Rooms &amp; Suites</string>
     <string name="sea_view">Sea View &amp; Balcony Options</string>
     <string name="wifi_amenities">WiFi &amp; Premium Amenities</string>
     <string name="room_service">24/7 Room Service</string>
-    <string name="concierge">Concierge &amp; Travel Services</string>
     <string name="pet_friendly">Pet-Friendly Accommodations</string>
-
-    <string name="quick_links">Quick Links</string>
-    <string name="home">Home</string>
-    <string name="book_room">Book a Room</string>
-    <string name="get_help">Get Help</string>
-    <string name="send_feedback">Send Feedback</string>
-    <string name="privacy_policy">Privacy Policy</string>
-    <string name="terms_conditions">Terms &amp; Conditions</string>
 
     <string name="footer_copyright">&#169; 2024 SunMoon Resorts. All rights reserved. | Owned &amp; Operated by Mr. Bhanu Pratap</string>
     <string name="footer_tagline">Crafting Memories, Creating Comfort | Excellence in Hospitality</string>
-
-    <!-- Status Badges -->
-    <string name="status_confirmed">Confirmed</string>
-    <string name="status_staying">Staying</string>
-    <string name="status_checked_out">Checked Out</string>
-    <string name="status_cancelled">Cancelled</string>
-
-    <!-- Booking Status -->
-    <string name="confirmed">Confirmed</string>
-    <string name="checked_in">Checked In</string>
-    <string name="checked_out">Checked Out</string>
-    <string name="cancelled">Cancelled</string>
 
     <!-- Booking Page -->
     <string name="check_in_date">Check-in Date</string>
@@ -131,15 +98,12 @@
     <string name="admin_access_only">(Admin access only)</string>
     <string name="new_booking">New Booking</string>
     <string name="logout">Logout</string>
-    <string name="serving_guests">Serving Guests</string>
     <string name="full_room_inventory">Full Room Inventory</string>
-    <string name="no_bookings_yet">No bookings yet</string>
      <string name="view_bill">View Bill</string>
 
      <!-- Admin Login Strings -->
      <string name="admin_login_title">Admin Access Only</string>
      <string name="admin_login_subtitle">Enter your password to access the admin panel</string>
-     <string name="password">Password</string>
      <string name="password_hint">Enter admin password</string>
      <string name="password_required">Password is required</string>
      <string name="password_too_short">Password must be at least 6 characters</string>
