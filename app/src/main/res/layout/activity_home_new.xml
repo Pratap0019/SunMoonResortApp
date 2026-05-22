@@ -121,14 +121,15 @@
                         android:textSize="12sp" />
 
                     <!-- Owner Image -->
-                    <ImageView
+                    <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/owner_image"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:layout_marginTop="16dp"
                         android:contentDescription="@string/owner_desc"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/owner_photo" />
+                        android:src="@drawable/owner_photo"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlaySunMoonResortRoundedImage" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
