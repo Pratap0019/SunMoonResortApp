@@ -216,7 +216,10 @@
                             android:layout_weight="1"
                             android:text="@string/room_type"
                             android:textColor="@color/white"
-                            android:textSize="11sp"
+                            android:textSize="9sp"
+                            android:maxLines="1"
+                            android:ellipsize="end"
+                            android:includeFontPadding="false"
                             android:textStyle="bold" />
 
                         <TextView
@@ -226,7 +229,10 @@
                             android:gravity="center"
                             android:text="@string/base_rate"
                             android:textColor="@color/white"
-                            android:textSize="11sp"
+                            android:textSize="9sp"
+                            android:maxLines="1"
+                            android:ellipsize="end"
+                            android:includeFontPadding="false"
                             android:textStyle="bold" />
 
                         <TextView
@@ -236,7 +242,10 @@
                             android:gravity="center"
                             android:text="@string/balcony"
                             android:textColor="@color/white"
-                            android:textSize="11sp"
+                            android:textSize="9sp"
+                            android:maxLines="1"
+                            android:ellipsize="end"
+                            android:includeFontPadding="false"
                             android:textStyle="bold" />
 
                         <TextView
@@ -246,7 +255,10 @@
                             android:gravity="center"
                             android:text="@string/nature_view"
                             android:textColor="@color/white"
-                            android:textSize="11sp"
+                            android:textSize="9sp"
+                            android:maxLines="1"
+                            android:ellipsize="end"
+                            android:includeFontPadding="false"
                             android:textStyle="bold" />
 
                         <TextView
@@ -256,7 +268,10 @@
                             android:gravity="center"
                             android:text="@string/wifi"
                             android:textColor="@color/white"
-                            android:textSize="11sp"
+                            android:textSize="9sp"
+                            android:maxLines="1"
+                            android:ellipsize="end"
+                            android:includeFontPadding="false"
                             android:textStyle="bold" />
 
                         <TextView
@@ -266,7 +281,10 @@
                             android:gravity="center"
                             android:text="@string/mini_fridge"
                             android:textColor="@color/white"
-                            android:textSize="11sp"
+                            android:textSize="9sp"
+                            android:maxLines="1"
+                            android:ellipsize="end"
+                            android:includeFontPadding="false"
                             android:textStyle="bold" />
 
                         <TextView
@@ -276,7 +294,10 @@
                             android:gravity="center"
                             android:text="@string/available_rooms"
                             android:textColor="@color/white"
-                            android:textSize="11sp"
+                            android:textSize="9sp"
+                            android:maxLines="1"
+                            android:ellipsize="end"
+                            android:includeFontPadding="false"
                             android:textStyle="bold" />
                     </LinearLayout>
 

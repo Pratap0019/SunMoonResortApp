@@ -12,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="12dp">
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="10dp">
 
         <!-- Top Row: Room & Guest Info -->
         <LinearLayout
@@ -32,9 +33,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Room"
-                    android:textSize="9sp"
+                    android:textSize="11sp"
                     android:textColor="@color/gray_light"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:includeFontPadding="false" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -45,9 +47,12 @@
                         android:id="@+id/room_number"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="12sp"
+                        android:textSize="11sp"
                         android:textStyle="bold"
-                        android:textColor="@color/text_dark" />
+                        android:textColor="@color/text_dark"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:includeFontPadding="false" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -55,7 +60,8 @@
                         android:text=" ("
                         android:textSize="11sp"
                         android:textColor="@color/text_dark"
-                        android:layout_marginStart="2dp" />
+                        android:layout_marginStart="2dp"
+                        android:includeFontPadding="false" />
 
                     <TextView
                         android:id="@+id/room_type"
@@ -63,7 +69,10 @@
                         android:layout_height="wrap_content"
                         android:textSize="11sp"
                         android:textColor="@color/resort_gold"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:includeFontPadding="false" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -71,7 +80,8 @@
                         android:text=")"
                         android:textSize="11sp"
                         android:textColor="@color/text_dark"
-                        android:layout_marginEnd="2dp" />
+                        android:layout_marginEnd="2dp"
+                        android:includeFontPadding="false" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -85,9 +95,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Guest"
-                    android:textSize="9sp"
+                    android:textSize="11sp"
                     android:textColor="@color/gray_light"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:includeFontPadding="false" />
 
                 <TextView
                     android:id="@+id/guest_name"
@@ -96,14 +107,15 @@
                     android:textSize="11sp"
                     android:textColor="@color/text_dark"
                     android:maxLines="1"
-                    android:ellipsize="end" />
+                    android:ellipsize="end"
+                    android:includeFontPadding="false" />
             </LinearLayout>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/status_badge"
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
-                android:textSize="9sp"
+                android:textSize="11sp"
                 android:layout_weight="0" />
         </LinearLayout>
 
@@ -124,16 +136,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Check-in"
-                    android:textSize="9sp"
+                    android:textSize="11sp"
                     android:textColor="@color/gray_light"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:includeFontPadding="false" />
 
                 <TextView
                     android:id="@+id/check_in_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="10sp"
-                    android:textColor="@color/text_dark" />
+                    android:textSize="11sp"
+                    android:textColor="@color/text_dark"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:includeFontPadding="false" />
             </LinearLayout>
 
             <LinearLayout
@@ -146,16 +162,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Check-out"
-                    android:textSize="9sp"
+                    android:textSize="11sp"
                     android:textColor="@color/gray_light"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:includeFontPadding="false" />
 
                 <TextView
                     android:id="@+id/check_out_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="10sp"
-                    android:textColor="@color/text_dark" />
+                    android:textSize="11sp"
+                    android:textColor="@color/text_dark"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:includeFontPadding="false" />
             </LinearLayout>
 
             <LinearLayout
@@ -169,9 +189,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Amount"
-                    android:textSize="9sp"
+                    android:textSize="11sp"
                     android:textColor="@color/gray_light"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:includeFontPadding="false" />
 
                 <TextView
                     android:id="@+id/total_amount"
@@ -179,7 +200,10 @@
                     android:layout_height="wrap_content"
                     android:textSize="11sp"
                     android:textStyle="bold"
-                    android:textColor="@color/resort_gold" />
+                    android:textColor="@color/resort_gold"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:includeFontPadding="false" />
             </LinearLayout>
         </LinearLayout>
 
