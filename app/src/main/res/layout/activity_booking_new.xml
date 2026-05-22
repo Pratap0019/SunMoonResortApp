@@ -165,6 +165,8 @@
                                     android:hint="@string/select_date"
                                     android:inputType="date"
                                     android:textSize="14sp"
+                                    android:textColor="@color/text_dark"
+                                    android:textColorHint="@color/text_light"
                                     android:focusable="false"
                                     android:clickable="true" />
                             </com.google.android.material.textfield.TextInputLayout>
@@ -212,6 +214,8 @@
                                     android:hint="@string/select_date"
                                     android:inputType="date"
                                     android:textSize="14sp"
+                                    android:textColor="@color/text_dark"
+                                    android:textColorHint="@color/text_light"
                                     android:focusable="false"
                                     android:clickable="true" />
                             </com.google.android.material.textfield.TextInputLayout>
@@ -266,6 +270,8 @@
                                     android:layout_height="48dp"
                                     android:inputType="number"
                                     android:textSize="14sp"
+                                    android:textColor="@color/text_dark"
+                                    android:textColorHint="@color/text_light"
                                     android:enabled="false" />
                             </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
@@ -315,6 +321,8 @@
                                 android:hint="@string/select_room_type_first"
                                 android:inputType="none"
                                 android:textSize="14sp"
+                                android:textColor="@color/text_dark"
+                                android:textColorHint="@color/text_light"
                                 android:enabled="false" />
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -381,7 +389,9 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="48dp"
                                     android:inputType="none"
-                                    android:textSize="14sp" />
+                                    android:textSize="14sp"
+                                    android:textColor="@color/text_dark"
+                                    android:textColorHint="@color/text_light" />
                             </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
                     </LinearLayout>
@@ -416,7 +426,9 @@
                                 android:layout_height="48dp"
                                 android:hint="@string/optional"
                                 android:inputType="numberDecimal"
-                                android:textSize="14sp" />
+                                android:textSize="14sp"
+                                android:textColor="@color/text_dark"
+                                android:textColorHint="@color/text_light" />
                         </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
 
@@ -581,7 +593,9 @@
                                 android:layout_height="48dp"
                                 android:hint="@string/guest_full_name"
                                 android:inputType="text"
-                                android:textSize="14sp" />
+                                android:textSize="14sp"
+                                android:textColor="@color/text_dark"
+                                android:textColorHint="@color/text_light" />
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <TextView
@@ -608,7 +622,8 @@
                                 app:boxCornerRadiusBottomStart="8dp"
                                 app:boxCornerRadiusTopEnd="8dp"
                                 app:boxCornerRadiusTopStart="8dp"
-                                app:prefixText="+91">
+                                app:prefixText="+91"
+                                app:prefixTextColor="@color/text_dark">
 
                                 <com.google.android.material.textfield.TextInputEditText
                                     android:id="@+id/contact_number"
@@ -617,7 +632,9 @@
                                     android:hint="@string/ten_digit_mobile"
                                     android:inputType="phone"
                                     android:maxLength="10"
-                                    android:textSize="14sp" />
+                                    android:textSize="14sp"
+                                    android:textColor="@color/text_dark"
+                                    android:textColorHint="@color/text_light" />
                             </com.google.android.material.textfield.TextInputLayout>
 
                             <TextView

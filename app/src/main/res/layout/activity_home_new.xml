@@ -520,7 +520,7 @@
                                 android:inputType="phone"
                                 android:maxLength="10"
                                 android:textColor="@color/text_dark"
-                                android:textColorHint="@color/gray_light"
+                                android:textColorHint="@color/text_light"
                                 android:textSize="14sp" />
                         </LinearLayout>
 
