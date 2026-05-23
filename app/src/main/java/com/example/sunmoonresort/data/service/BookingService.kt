@@ -1,8 +1,8 @@
 package com.example.sunmoonresort.data.service
 
-import com.example.sunmoonresort.data.BookingLocalStore
 import com.example.sunmoonresort.data.HotelData
 import com.example.sunmoonresort.data.SunMoonResort
+import com.example.sunmoonresort.data.BookingStoreManager
 import com.example.sunmoonresort.model.Bill
 import com.example.sunmoonresort.model.BookingDetails
 import com.example.sunmoonresort.model.BookingRecord
@@ -114,7 +114,7 @@ object BookingService {
             status = BookingStatus.CONFIRMED
         )
         HotelData.bookings.computeIfAbsent(roomNumber) { mutableListOf() }.add(bookingDetails)
-        BookingLocalStore.saveBookings(HotelData.bookings)
+        BookingStoreManager.saveBookings(HotelData.bookings)
         return bookingId
     }
 
@@ -149,7 +149,7 @@ object BookingService {
         }
 
         targetBooking.status = BookingStatus.CANCELLED
-        BookingLocalStore.saveBookings(HotelData.bookings)
+        BookingStoreManager.saveBookings(HotelData.bookings)
         return Result.Success("Booking $bookingId has been cancelled.")
     }
 
@@ -175,7 +175,7 @@ object BookingService {
             }
             return if (canTransition) {
                 booking.status = targetStatus
-                BookingLocalStore.saveBookings(HotelData.bookings)
+                BookingStoreManager.saveBookings(HotelData.bookings)
                 true
             } else {
                 false
