@@ -3,7 +3,6 @@ package com.example.sunmoonresort.data
 import com.example.sunmoonresort.model.BookingDetails
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
 /**
@@ -26,7 +25,7 @@ object BookingFirebaseStore : BookingStore {
     private const val DOCUMENT   = "bookings_data"
     private const val FIELD_JSON = "bookings_json"
 
-    private val gson = Gson()
+    private val gson = GsonFactory.instance
 
     // ──────────────────────────────────────────────────────────────────────────
     // Save

@@ -2,14 +2,13 @@ package com.example.sunmoonresort.data
 
 import android.content.Context
 import com.example.sunmoonresort.model.BookingDetails
-import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
 object BookingLocalStore : BookingStore {
     private const val PREFS_NAME = "sunmoon_resort_prefs"
     private const val KEY_BOOKINGS = "bookings"
 
-    private val gson = Gson()
+    private val gson = GsonFactory.instance
     private var appContext: Context? = null
 
     fun init(context: Context) {
