@@ -17,7 +17,7 @@ object BookingStoreConfig {
      * Active booking backend.
      * Keep LOCAL unless cloud setup is complete.
      */
-    val selectedBackend: StorageBackend = StorageBackend.LOCAL
+    val selectedBackend: StorageBackend = StorageBackend.SUPABASE
 
     /** Compatibility alias used by older call sites/comments. */
     val useFirebaseStore: Boolean
@@ -31,6 +31,6 @@ object BookingStoreConfig {
     // Example:
     //   supabaseUrl = "https://YOUR_PROJECT_REF.supabase.co"
     //   supabaseAnonKey = "eyJhbGciOi..."
-    const val supabaseUrl: String = ""
-    const val supabaseAnonKey: String = ""
+    const val supabaseUrl: String = "https://your-project-ref.supabase.co"
+    const val supabaseAnonKey: String = "your-anon-key-here"
 }
