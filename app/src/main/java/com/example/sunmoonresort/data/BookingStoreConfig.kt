@@ -1,26 +1,36 @@
 package com.example.sunmoonresort.data
 
 /**
- * Local compile-time switch that controls which [BookingStore] the app uses.
+ * Local compile-time storage backend selector.
  *
- * ─────────────────────────────────────────────────────────────────────────────
- * TO SWITCH STORES — edit the single flag below and rebuild the app:
- *
- *   storeDataInFirebase = true   →  Firestore  (BookingFirebaseStore)
- *   storeDataInFirebase = false  →  SharedPreferences (BookingLocalStore)
- * ─────────────────────────────────────────────────────────────────────────────
+ * Change [selectedBackend] and rebuild the app.
  */
 object BookingStoreConfig {
 
+    enum class StorageBackend {
+        LOCAL,
+        FIREBASE,
+        SUPABASE,
+    }
+
     /**
-     * Set to `true`  to persist bookings in Firebase Firestore.
-     * Set to `false` to persist bookings locally via SharedPreferences.
-     *
-     * Rebuild the app after changing this value.
+     * Active booking backend.
+     * Keep LOCAL unless cloud setup is complete.
      */
-    const val storeDataInFirebase: Boolean = false
+    val selectedBackend: StorageBackend = StorageBackend.LOCAL
 
-    /** Convenience alias read by [BookingStoreManager]. */
-    val useFirebaseStore: Boolean get() = storeDataInFirebase
+    /** Compatibility alias used by older call sites/comments. */
+    val useFirebaseStore: Boolean
+        get() = selectedBackend == StorageBackend.FIREBASE
+
+    /** True for any remote backend (Firebase/Supabase). */
+    val isRemoteStoreEnabled: Boolean
+        get() = selectedBackend != StorageBackend.LOCAL
+
+    // Supabase REST settings (required only when selectedBackend == SUPABASE)
+    // Example:
+    //   supabaseUrl = "https://YOUR_PROJECT_REF.supabase.co"
+    //   supabaseAnonKey = "eyJhbGciOi..."
+    const val supabaseUrl: String = ""
+    const val supabaseAnonKey: String = ""
 }
-

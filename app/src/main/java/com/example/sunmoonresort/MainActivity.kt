@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    // Safety timeout: navigate to HomeActivity even if Firebase never responds (5 seconds).
+    // Safety timeout: navigate to HomeActivity even if remote backend never responds (5 seconds).
     private val timeoutHandler = Handler(Looper.getMainLooper())
     private val timeoutRunnable = Runnable { navigateToHome() }
     private val TIMEOUT_MS = 5_000L
@@ -21,20 +21,18 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (!BookingStoreConfig.storeDataInFirebase) {
-            // Local store: data is already ready — skip the loading screen entirely.
+        if (!BookingStoreConfig.isRemoteStoreEnabled) {
+            // Local store: data is ready immediately.
             navigateToHome()
             return
         }
 
-        // Firebase store: show branded loading screen while Firestore responds.
+        // Remote store (Firebase/Supabase): show loading screen while async hydration finishes.
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Start safety timeout so the app never gets stuck.
         timeoutHandler.postDelayed(timeoutRunnable, TIMEOUT_MS)
 
-        // Navigate to HomeActivity as soon as data is ready.
         SunMoonResortApp.onDataReady {
             timeoutHandler.removeCallbacks(timeoutRunnable)
             navigateToHome()

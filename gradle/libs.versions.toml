@@ -26,7 +26,7 @@ threetenabp = { group = "com.jakewharton.threetenabp", name = "threetenabp", ver
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 # Firebase BOM manages all Firebase library versions together
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
-firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-firestore-ktx" }
+firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

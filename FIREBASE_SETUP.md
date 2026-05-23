@@ -30,34 +30,32 @@ Before building, complete these steps in your Firebase Console:
 
 ---
 
-## 3. Toggle the Store — local flag in code
+## 3. Toggle backend in local code
 
 Open `app/src/main/java/com/example/sunmoonresort/data/BookingStoreConfig.kt`
-and change the single constant, then **rebuild the app**:
+and set the enum value, then **rebuild the app**:
 
 ```kotlin
-// ✅ Save & load from Firebase Firestore:
-const val storeDataInFirebase: Boolean = true
-
-// ✅ Save & load locally via SharedPreferences (default):
-const val storeDataInFirebase: Boolean = false
+val selectedBackend: StorageBackend = StorageBackend.FIREBASE
 ```
 
-> No Firebase Console changes needed to flip the switch — it is entirely code-side.
+Available values:
+- `StorageBackend.LOCAL` (SharedPreferences)
+- `StorageBackend.FIREBASE` (Firestore)
+- `StorageBackend.SUPABASE` (see `SUPABASE_MIGRATION.md`)
 
 ---
 
-## 4. Loading Screen (Firebase path only)
+## 4. Loading Screen (remote backends only)
 
-When `storeDataInFirebase = true` the app shows a **branded loading screen**
-(`MainActivity`) while it waits for Firestore to respond:
+When backend is `FIREBASE` (or `SUPABASE`) the app shows a loading screen
+(`MainActivity`) while async hydration completes:
 
 - Displays the resort logo, a spinner, and **"Syncing bookings from cloud…"**
 - Automatically navigates to `HomeActivity` once bookings are loaded
-- **5-second safety timeout** — if Firestore never responds the app navigates anyway,
-  so users are never permanently stuck on the splash screen
+- **5-second safety timeout** — if remote load fails, app navigates anyway
 
-When `storeDataInFirebase = false` the loading screen is skipped entirely
+When backend is `LOCAL` the loading screen is skipped entirely
 (SharedPreferences is instant).
 
 ---
@@ -87,42 +85,39 @@ service cloud.firestore {
 App launch → SunMoonResortApp.onCreate()
   │
   ├─ AndroidThreeTen.init()
-  ├─ FirebaseApp.initializeApp()        ← always initialised
   ├─ BookingLocalStore.init()           ← always initialised (fallback)
   │
-  ├─ storeDataInFirebase = false
-  │     └─ HotelData ← BookingLocalStore.loadBookings()  (sync, instant)
-  │           └─ notifyDataReady()
+  ├─ StorageBackend.LOCAL
+  │    → HotelData ← BookingLocalStore.loadBookings()  (sync)
   │
-  └─ storeDataInFirebase = true
-        └─ BookingFirebaseStore.loadBookingsAsync()
-              └─ [Firestore responds] → HotelData.replaceBookings()
-                    └─ notifyDataReady()
+  ├─ StorageBackend.FIREBASE
+  │    → FirebaseApp.initializeApp()
+  │    → BookingFirebaseStore.loadBookingsAsync()
+  │
+  └─ StorageBackend.SUPABASE
+       → BookingSupabaseStore.loadBookingsAsync()
 
 MainActivity (launcher)
   │
-  ├─ storeDataInFirebase = false  →  navigates to HomeActivity immediately
-  │
-  └─ storeDataInFirebase = true
-        └─ shows loading screen (logo + spinner)
-              ├─ SunMoonResortApp.onDataReady { navigateToHome() }   ← normal path
-              └─ 5-second timeout fallback    { navigateToHome() }   ← safety net
+  ├─ local backend   → navigates to HomeActivity immediately
+  └─ remote backend  → shows loading screen + timeout fallback
 ```
 
-### Save flow (every booking operation)
+### Save flow
 
 ```
 BookingService.confirmBooking / cancelBooking / updateBookingStatus
-  └─ BookingStoreManager.saveBookings(HotelData.bookings)
-        ├─ storeDataInFirebase = false  →  BookingLocalStore.saveBookings()   (sync)
-        └─ storeDataInFirebase = true   →  BookingFirebaseStore.saveBookings() (async, fire-and-forget)
+  → BookingStoreManager.saveBookings(HotelData.bookings)
+      ├─ LOCAL    → BookingLocalStore.saveBookings()
+      ├─ FIREBASE → BookingFirebaseStore.saveBookings()
+      └─ SUPABASE → BookingSupabaseStore.saveBookings()
 ```
 
 ### Search / Read flow
 
 ```
 BookingService.searchBookingsByMobile / getAllBookingRecords / …
-  └─ reads HotelData.bookings  (always in-memory, hydrated on startup from the active store)
+  → reads HotelData.bookings (always in-memory)
 ```
 
 ---
@@ -132,20 +127,21 @@ BookingService.searchBookingsByMobile / getAllBookingRecords / …
 | File | Purpose |
 |------|---------|
 | `data/BookingStore.kt` | Interface — contract for all store implementations |
-| `data/BookingStoreConfig.kt` | **Single `const val` flag** — `storeDataInFirebase: Boolean` |
+| `data/BookingStoreConfig.kt` | Enum selector (`LOCAL` / `FIREBASE` / `SUPABASE`) |
 | `data/BookingFirebaseStore.kt` | Firestore implementation of `BookingStore` |
+| `data/BookingSupabaseStore.kt` | Supabase REST implementation of `BookingStore` |
 | `data/BookingStoreManager.kt` | Router — delegates save/load to the active store |
-| `res/layout/activity_main.xml` | Branded loading screen shown during Firestore fetch |
+| `res/layout/activity_main.xml` | Branded loading screen shown during remote fetch |
 
 ## Modified Files
 
 | File | Change |
 |------|--------|
-| `data/BookingLocalStore.kt` | Now implements `BookingStore` interface; `loadBookingsAsync` added (calls sync result immediately) |
-| `data/service/BookingService.kt` | All `BookingLocalStore.saveBookings()` → `BookingStoreManager.saveBookings()` |
-| `SunMoonResortApp.kt` | Stores loaded via flag; `companion object` exposes `onDataReady()` callback |
-| `MainActivity.kt` | Shows loading screen on Firebase path; registers `onDataReady` + 5s timeout |
+| `data/BookingLocalStore.kt` | Implements `BookingStore`; `loadBookingsAsync` added |
+| `data/service/BookingService.kt` | `BookingStoreManager.saveBookings()` used for all mutations |
+| `SunMoonResortApp.kt` | Hydrates from selected backend; `onDataReady()` callback exposed |
+| `MainActivity.kt` | Loading screen for remote backend + 5s timeout |
 | `res/values/strings.xml` | Added `splash_loading` string |
-| `gradle/libs.versions.toml` | Added Firebase BOM + Firestore + google-services plugin |
-| `app/build.gradle` | Applied google-services plugin; added Firebase dependencies |
-| `build.gradle` (root) | Added google-services plugin `apply false` |
+| `gradle/libs.versions.toml` | Firebase BOM + Firestore + google-services plugin versions |
+| `app/build.gradle` | Google services plugin + Firebase dependencies |
+| `build.gradle` (root) | Google services plugin `apply false` |
