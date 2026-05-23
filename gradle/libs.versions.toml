@@ -10,8 +10,8 @@ activityKtx = "1.8.0"
 constraintlayout = "2.1.4"
 threetenabp = "1.4.4"
 gson = "2.11.0"
-firebaseBom = "33.5.1"
-googleServices = "4.4.2"
+firebaseBom = "34.13.0"
+googleServices = "4.4.4"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }

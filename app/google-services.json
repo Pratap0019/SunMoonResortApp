@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "677320894694",
+    "project_id": "sunmoonresort-7d57d",
+    "storage_bucket": "sunmoonresort-7d57d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:677320894694:android:0fd0af1ec7733871333327",
+        "android_client_info": {
+          "package_name": "com.example.sunmoonresort"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWRPUnfbD8T6OsKPfyWd90IsXINUSnfXA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
