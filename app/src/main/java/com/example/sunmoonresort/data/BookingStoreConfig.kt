@@ -31,6 +31,6 @@ object BookingStoreConfig {
     // Example:
     //   supabaseUrl = "https://YOUR_PROJECT_REF.supabase.co"
     //   supabaseAnonKey = "eyJhbGciOi..."
-    const val supabaseUrl: String = "https://your-project-ref.supabase.co"
-    const val supabaseAnonKey: String = "your-anon-key-here"
+    const val supabaseUrl: String = "https://vjgkrpuahuzfuguezesv.supabase.co"
+    const val supabaseAnonKey: String = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZqZ2tycHVhaHV6ZnVndWV6ZXN2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk1MTUxNTIsImV4cCI6MjA5NTA5MTE1Mn0.fpymvAk1dOeTLyBCC3xagV8kZ8uweylxiHwsrOSX0tI"
 }
