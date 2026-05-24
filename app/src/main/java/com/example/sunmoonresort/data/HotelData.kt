@@ -36,10 +36,10 @@ object HotelData {
 
     // WIFI and MINIFRIDGE are free, so they are intentionally excluded.
     val extrasRate: Map<Extras, Double> = mapOf(
-        Extras.MATTRESS to 500.0,
-        Extras.SPA to 1500.0,
-        Extras.GymPASS to 500.0,
-        Extras.PoolPASS to 500.0,
+        Extras.MATTRESS to 250.0,
+        Extras.SPA to 1200.0,
+        Extras.GymPASS to 200.0,
+        Extras.PoolPASS to 300.0,
     )
 
     val petFeeRates: Map<String, Double> = mapOf(

@@ -30,7 +30,7 @@
                 <!-- Left: Logo -->
                 <ImageView
                     android:id="@+id/logo_header"
-                    android:layout_width="170dp"
+                    android:layout_width="112dp"
                     android:layout_height="40dp"
                     android:contentDescription="@string/logo_description"
                     android:scaleType="centerCrop"
@@ -67,7 +67,7 @@
             android:gravity="center_horizontal"
             android:orientation="vertical"
             android:paddingTop="5dp"
-            android:paddingBottom="8dp">
+            android:paddingBottom="5dp">
 
             <!-- Resort Logo -->
             <ImageView
@@ -96,7 +96,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:orientation="vertical"
-                    android:padding="5dp">
+                    android:padding="3dp">
 
                     <TextView
                         style="@style/TextSunMoonResortHeading"
@@ -112,25 +112,25 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:gravity="center"
-                        android:lineSpacingMultiplier="1.4"
+                        android:lineSpacingMultiplier="1.2"
                         android:text="@string/welcome_description"
                         android:textColor="@color/text_dark"
-                        android:textSize="14sp" />
+                        android:textSize="10sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
+                        android:layout_marginTop="5dp"
                         android:text="@string/owner_credit"
-                        android:textColor="@color/text_dark"
-                        android:textSize="12sp" />
+                        android:textColor="@color/black"
+                        android:textSize="8sp" />
 
                     <!-- Owner Image -->
                     <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/owner_image"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="10dp"
                         android:contentDescription="@string/owner_desc"
                         android:scaleType="centerCrop"
                         android:src="@drawable/owner_photo"
