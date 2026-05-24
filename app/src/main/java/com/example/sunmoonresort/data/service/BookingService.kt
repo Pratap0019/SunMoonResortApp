@@ -3,6 +3,8 @@ package com.example.sunmoonresort.data.service
 import com.example.sunmoonresort.data.HotelData
 import com.example.sunmoonresort.data.SunMoonResort
 import com.example.sunmoonresort.data.BookingStoreManager
+import com.example.sunmoonresort.data.BookingStoreConfig
+import com.example.sunmoonresort.data.BookingSupabaseStore
 import com.example.sunmoonresort.model.Bill
 import com.example.sunmoonresort.model.BookingDetails
 import com.example.sunmoonresort.model.BookingRecord
@@ -92,6 +94,8 @@ object BookingService {
 
     /**
      * Confirm and store a booking.
+     *
+     * For Supabase, this uses an atomic RPC so two devices cannot confirm the same room/date.
      */
     fun confirmBooking(
         roomNumber: Int,
@@ -100,8 +104,9 @@ object BookingService {
         daysStayed: Int,
         checkIn: String,
         checkOut: String,
-        bill: Bill
-    ): String {
+        bill: Bill,
+        onComplete: (ConfirmBookingResult) -> Unit,
+    ) {
         val guest = Guest(guestName, contactNumber)
         val bookingId = UUID.randomUUID().toString()
         val bookingDetails = BookingDetails(
@@ -113,9 +118,45 @@ object BookingService {
             checkOutDate = checkOut,
             status = BookingStatus.CONFIRMED
         )
-        HotelData.bookings.computeIfAbsent(roomNumber) { mutableListOf() }.add(bookingDetails)
+
+        if (BookingStoreConfig.selectedBackend == BookingStoreConfig.StorageBackend.SUPABASE) {
+            BookingSupabaseStore.confirmBookingAtomic(roomNumber, bookingDetails) { atomicResult ->
+                when (atomicResult) {
+                    is BookingSupabaseStore.AtomicConfirmResult.Success -> {
+                        appendBookingInMemory(roomNumber, bookingDetails)
+                        onComplete(ConfirmBookingResult.Success(atomicResult.bookingId))
+                    }
+
+                    BookingSupabaseStore.AtomicConfirmResult.RoomAlreadyBooked -> {
+                        BookingStoreManager.loadBookingsAsync { freshBookings ->
+                            HotelData.replaceBookings(freshBookings)
+                            onComplete(ConfirmBookingResult.RoomAlreadyBooked)
+                        }
+                    }
+
+                    is BookingSupabaseStore.AtomicConfirmResult.Error -> {
+                        onComplete(ConfirmBookingResult.Error(atomicResult.message))
+                    }
+                }
+            }
+            return
+        }
+
+        // Local/Firebase fallback for compatibility.
+        val isAvailable = try {
+            isRoomAvailableForRange(roomNumber, LocalDate.parse(checkIn), LocalDate.parse(checkOut))
+        } catch (_: Exception) {
+            true
+        }
+
+        if (!isAvailable) {
+            onComplete(ConfirmBookingResult.RoomAlreadyBooked)
+            return
+        }
+
+        appendBookingInMemory(roomNumber, bookingDetails)
         BookingStoreManager.saveBookings(HotelData.bookings)
-        return bookingId
+        onComplete(ConfirmBookingResult.Success(bookingId))
     }
 
     /**
@@ -248,6 +289,10 @@ object BookingService {
     }
 
     // Private helpers
+    private fun appendBookingInMemory(roomNumber: Int, bookingDetails: BookingDetails) {
+        HotelData.bookings.computeIfAbsent(roomNumber) { mutableListOf() }.add(bookingDetails)
+    }
+
     private fun buildAllBookingRecords(): List<BookingRecord> {
         val bookingRecords = mutableListOf<BookingRecord>()
         HotelData.bookings.forEach { (roomNum, bookingDetailsList) ->
@@ -291,6 +336,12 @@ object BookingService {
         } else {
             digits
         }
+    }
+
+    sealed class ConfirmBookingResult {
+        data class Success(val bookingId: String) : ConfirmBookingResult()
+        data object RoomAlreadyBooked : ConfirmBookingResult()
+        data class Error(val message: String) : ConfirmBookingResult()
     }
 
     sealed class Result {

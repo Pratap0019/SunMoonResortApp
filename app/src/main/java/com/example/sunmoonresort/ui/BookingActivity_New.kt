@@ -344,30 +344,125 @@ class BookingActivity : AppCompatActivity() {
 
         if (!valid) return
 
-        try {
-            val bookingId = BookingService.confirmBooking(
-                roomNumber = assignedRoomNumber!!,
-                guestName = guestName,
-                contactNumber = "+91-$contactNumber",
-                daysStayed = binding.daysStayed.text.toString().toInt(),
-                checkIn = selectedCheckIn.toString(),
-                checkOut = selectedCheckOut.toString(),
-                bill = currentBill!!
-            )
-
-            binding.priceBreakdownCard.visibility = View.GONE
-            binding.calculatePriceArea.visibility = View.GONE
-            binding.successCard.visibility = View.VISIBLE
-            binding.successMessage.text = buildString {
-                append("Booking Confirmed!\n\n")
-                append("Booking ID: $bookingId\n")
-                append("Room: ${binding.assignedRoomNumber.text}\n")
-                append("Guest: $guestName\n")
-                append("Total: ₹${String.format("%.2f", currentBill!!.totalAmount)}")
-            }
-        } catch (e: Exception) {
-            showError("Error confirming booking: ${e.message}")
+        val roomNumber = assignedRoomNumber
+        val bill = currentBill
+        if (roomNumber == null || bill == null || selectedCheckIn == null || selectedCheckOut == null) {
+            showError("Please calculate price again before confirming booking")
+            return
         }
+
+        binding.confirmBookingBtn.isEnabled = false
+        BookingService.confirmBooking(
+            roomNumber = roomNumber,
+            guestName = guestName,
+            contactNumber = "+91-$contactNumber",
+            daysStayed = binding.daysStayed.text.toString().toInt(),
+            checkIn = selectedCheckIn.toString(),
+            checkOut = selectedCheckOut.toString(),
+            bill = bill,
+        ) { result ->
+            binding.confirmBookingBtn.isEnabled = true
+            when (result) {
+                is BookingService.ConfirmBookingResult.Success -> {
+                    binding.priceBreakdownCard.visibility = View.GONE
+                    binding.calculatePriceArea.visibility = View.GONE
+                    binding.successCard.visibility = View.VISIBLE
+                    binding.successMessage.text = buildString {
+                        append("Booking Confirmed!\n\n")
+                        append("Booking ID: ${result.bookingId}\n")
+                        append("Room: ${binding.assignedRoomNumber.text}\n")
+                        append("Guest: $guestName\n")
+                        append("Total: ₹${String.format("%.2f", bill.totalAmount)}")
+                    }
+                }
+
+                BookingService.ConfirmBookingResult.RoomAlreadyBooked -> {
+                    val reassigned = tryAutoReassignRoomAfterConflict()
+                    if (!reassigned) {
+                        refreshAvailabilityAfterConflict()
+                    }
+                }
+
+                is BookingService.ConfirmBookingResult.Error -> {
+                    showError("Error confirming booking: ${result.message}")
+                }
+            }
+        }
+    }
+
+    private fun tryAutoReassignRoomAfterConflict(): Boolean {
+        val checkIn = selectedCheckIn ?: return false
+        val checkOut = selectedCheckOut ?: return false
+
+        val selectedRoomText = binding.roomTypeSpinner.text?.toString().orEmpty()
+        if (selectedRoomText.isBlank()) return false
+
+        val roomTypeName = selectedRoomText.split(" ").firstOrNull().orEmpty()
+        val roomType = try {
+            RoomType.valueOf(roomTypeName)
+        } catch (_: IllegalArgumentException) {
+            return false
+        }
+
+        val previousRoomNumber = assignedRoomNumber
+        val nextRoom = BookingService.getFirstAvailableRoom(roomType, checkIn, checkOut) ?: return false
+        if (previousRoomNumber != null && nextRoom.number == previousRoomNumber) return false
+
+        val daysStayed = binding.daysStayed.text.toString().toIntOrNull() ?: return false
+        val spaSessions = if (Extras.SPA in selectedExtras) spaSessionsSelected else null
+        val newBill = BookingService.calculateBill(
+            roomNumber = nextRoom.number,
+            daysStayed = daysStayed,
+            selectedExtras = selectedExtras.toList(),
+            petWeight = selectedPetWeightKg,
+            spaSessions = spaSessions,
+        )
+
+        assignedRoomNumber = nextRoom.number
+        currentBill = newBill
+        displayBillBreakdown(newBill, nextRoom.number, roomType)
+        showError("The previously selected room was just booked. We switched you to room ${nextRoom.number}. Please confirm again.")
+        return true
+    }
+
+    private fun refreshAvailabilityAfterConflict() {
+        val checkIn = selectedCheckIn
+        val checkOut = selectedCheckOut
+        if (checkIn == null || checkOut == null) {
+            resetRoomTypeSelectionForDateChange()
+            showError("This room was just booked by someone else. Please select dates and check availability again.")
+            return
+        }
+
+        val availability = BookingService.getRoomTypeAvailability(checkIn, checkOut)
+        val roomOptions = mutableListOf<String>()
+        for ((roomType, count) in availability) {
+            if (count > 0) {
+                roomOptions.add("${roomType.name} - $count room${if (count > 1) "s" else ""} available")
+            }
+        }
+
+        currentBill = null
+        assignedRoomNumber = null
+        binding.priceBreakdownCard.visibility = View.GONE
+        binding.confirmBookingBtn.isVisible = false
+
+        if (roomOptions.isEmpty()) {
+            availabilityChecked = false
+            binding.roomTypeSpinner.setText("", false)
+            binding.roomTypeSpinner.isEnabled = false
+            binding.calculatePriceBtn.isEnabled = false
+            showError("No rooms are currently available for selected dates. Please change dates and try again.")
+            return
+        }
+
+        availabilityChecked = true
+        binding.roomTypeSpinner.isEnabled = true
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, roomOptions)
+        binding.roomTypeSpinner.setAdapter(adapter)
+        binding.roomTypeSpinner.setText(roomOptions.first(), false)
+        binding.calculatePriceBtn.isEnabled = true
+        showError("Selected room was just booked. We refreshed the latest options. Please calculate price again.")
     }
 
     private fun showError(message: String) {

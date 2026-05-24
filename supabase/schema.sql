@@ -57,6 +57,110 @@ execute function public.set_updated_at();
 alter table public.bookings enable row level security;
 alter table public.booking_breakdown_items enable row level security;
 
+-- 5) Concurrency protection: prevent active-booking overlap on same room.
+create extension if not exists btree_gist;
+
+alter table public.bookings
+  drop constraint if exists bookings_no_overlap_per_room;
+
+alter table public.bookings
+  add constraint bookings_no_overlap_per_room
+  exclude using gist (
+    room_number with =,
+    daterange(check_in_date::date, check_out_date::date, '[)') with &&
+  )
+  where (status in ('CONFIRMED', 'CHECKED_IN'));
+
+-- 6) Atomic room confirmation RPC (single transaction).
+create or replace function public.confirm_booking_atomic(
+  booking_id text,
+  room_number integer,
+  guest_name text,
+  contact_number text,
+  days_stayed integer,
+  check_in_date text,
+  check_out_date text,
+  status text,
+  total_amount numeric,
+  breakdown_items jsonb default '[]'::jsonb
+)
+returns jsonb
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  has_conflict boolean;
+  row_item jsonb;
+begin
+  if status not in ('CONFIRMED', 'CHECKED_IN', 'CHECKED_OUT', 'CANCELLED') then
+    return jsonb_build_object('ok', false, 'reason', 'INVALID_STATUS');
+  end if;
+
+  perform pg_advisory_xact_lock(room_number);
+
+  select exists (
+    select 1
+    from public.bookings b
+    where b.room_number = confirm_booking_atomic.room_number
+      and b.status in ('CONFIRMED', 'CHECKED_IN')
+      and daterange(b.check_in_date::date, b.check_out_date::date, '[)')
+          && daterange(confirm_booking_atomic.check_in_date::date, confirm_booking_atomic.check_out_date::date, '[)')
+  ) into has_conflict;
+
+  if has_conflict then
+    return jsonb_build_object('ok', false, 'reason', 'ROOM_ALREADY_BOOKED');
+  end if;
+
+  insert into public.bookings (
+    booking_id,
+    room_number,
+    guest_name,
+    contact_number,
+    days_stayed,
+    check_in_date,
+    check_out_date,
+    status,
+    total_amount
+  ) values (
+    booking_id,
+    room_number,
+    guest_name,
+    contact_number,
+    days_stayed,
+    check_in_date,
+    check_out_date,
+    status,
+    total_amount
+  );
+
+  for row_item in select * from jsonb_array_elements(coalesce(breakdown_items, '[]'::jsonb)) loop
+    insert into public.booking_breakdown_items (
+      booking_id,
+      line_order,
+      item_name,
+      calculation,
+      amount
+    ) values (
+      booking_id,
+      coalesce((row_item ->> 'line_order')::integer, 0),
+      coalesce(row_item ->> 'item_name', ''),
+      coalesce(row_item ->> 'calculation', ''),
+      coalesce((row_item ->> 'amount')::numeric, 0)
+    );
+  end loop;
+
+  return jsonb_build_object('ok', true, 'booking_id', booking_id);
+exception
+  when others then
+    return jsonb_build_object('ok', false, 'reason', SQLSTATE, 'message', SQLERRM);
+end;
+$$;
+
+grant execute on function public.confirm_booking_atomic(
+  text, integer, text, text, integer, text, text, text, numeric, jsonb
+) to anon;
+
 -- WARNING: This allows any client with anon key to read/write all rows.
 -- Tighten these policies before production multi-user rollout.
 drop policy if exists bookings_all_anon on public.bookings;
