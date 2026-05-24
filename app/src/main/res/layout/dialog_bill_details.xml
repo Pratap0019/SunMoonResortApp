@@ -17,11 +17,11 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:paddingBottom="14dp">
+            android:paddingBottom="8dp">
 
             <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:contentDescription="@string/logo_description"
                 android:src="@drawable/logoicon" />
 
@@ -29,7 +29,7 @@
                 style="@style/TextSunMoonResortHeading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="3dp"
                 android:text="@string/app_name"
                 android:textColor="@color/resort_gold"
                 android:textSize="24sp"
@@ -38,7 +38,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="1dp"
                 android:text="@string/invoice_subtitle"
                 android:textColor="@color/text_light"
                 android:textSize="12sp" />
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:paddingTop="12dp"
+            android:paddingTop="5dp"
             android:paddingBottom="10dp">
 
             <TextView
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/resort_address_line_1"
                 android:textColor="@color/text_dark"
-                android:textSize="12sp"
+                android:textSize="10sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -70,14 +70,14 @@
                 android:layout_height="wrap_content"
                 android:text="@string/resort_address_line_2"
                 android:textColor="@color/text_light"
-                android:textSize="12sp" />
+                android:textSize="10sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/resort_address_line_3"
                 android:textColor="@color/text_light"
-                android:textSize="12sp" />
+                android:textSize="10sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -85,7 +85,7 @@
                 android:layout_marginTop="4dp"
                 android:text="@string/phone_number"
                 android:textColor="@color/text_dark"
-                android:textSize="12sp"
+                android:textSize="10sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -93,13 +93,13 @@
                 android:layout_height="wrap_content"
                 android:text="@string/email_reservations"
                 android:textColor="@color/text_dark"
-                android:textSize="12sp"
+                android:textSize="10sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:text="@string/gst_number"
                 android:textColor="@color/text_dark"
                 android:textSize="12sp"
@@ -116,7 +116,7 @@
             android:layout_height="wrap_content"
             android:gravity="end"
             android:orientation="horizontal"
-            android:paddingTop="12dp"
+            android:paddingTop="8dp"
             android:paddingBottom="8dp">
 
             <TextView
@@ -143,7 +143,7 @@
             android:layout_marginTop="6dp"
             android:text="@string/guest_information"
             android:textColor="@color/resort_gold"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:textStyle="bold" />
 
         <TableLayout
@@ -174,6 +174,7 @@
             </TableRow>
 
             <TableRow>
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -181,7 +182,7 @@
                     android:paddingVertical="4dp"
                     android:text="@string/contact_number_label"
                     android:textColor="@color/text_light"
-                    android:textSize="12sp"
+                    android:textSize="10sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -199,8 +200,8 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:background="@color/gray_light" />
 
         <TextView
@@ -209,7 +210,7 @@
             android:layout_height="wrap_content"
             android:text="@string/room_details"
             android:textColor="@color/resort_gold"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:textStyle="bold" />
 
         <TableLayout
@@ -341,7 +342,7 @@
             android:layout_height="wrap_content"
             android:text="@string/price_breakdown"
             android:textColor="@color/resort_gold"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:textStyle="bold" />
 
         <LinearLayout
@@ -447,7 +448,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/hotel_contact_details"
                     android:textColor="@color/resort_gold"
-                    android:textSize="12sp"
+                    android:textSize="10sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -456,7 +457,7 @@
                     android:layout_marginTop="6dp"
                     android:text="@string/hotel_contact_body"
                     android:textColor="@color/text_light"
-                    android:textSize="11sp" />
+                    android:textSize="10sp" />
             </LinearLayout>
 
             <LinearLayout

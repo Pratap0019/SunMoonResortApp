@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">SunMoon Resort</string>
-    <string name="splash_loading">Syncing bookings from cloud…</string>
+    <string name="splash_loading">Syncing app…</string>
 
     <!-- Header & Navigation -->
     <string name="admin">Admin</string>
@@ -10,7 +10,7 @@
     <!-- Welcome Section -->
     <string name="resort_logo_desc">SunMoon Resort Main Logo</string>
     <string name="welcome_title">Welcome to SunMoon Resort</string>
-    <string name="welcome_description">Experience luxury and comfort at SunMoon Resort, where world-class amenities meet personalized service. Nestled in a prime location with stunning sea views, our hotel offers the perfect retreat for business travelers and vacation seekers alike. From elegantly appointed rooms to exceptional dining, we are committed to making your stay unforgettable.</string>
+    <string name="welcome_description">Experience refined luxury at SunMoon Resort, where elegant comfort meets attentive, personalized service. Set in a prime location, the resort offers breathtaking views and an atmosphere of effortless tranquility. Whether you’re traveling for business or leisure, our thoughtfully designed rooms, world-class amenities, and exceptional dining experiences create the perfect escape. At SunMoon Resort, every detail is crafted to ensure your stay is not just memorable, but truly extraordinary.</string>
     <string name="owner_credit">(A property of Mr. Bhanu Pratap)</string>
     <string name="owner_desc">Mr. Bhanu Pratap - Owner</string>
 
@@ -64,12 +64,12 @@
 
     <string name="our_services">Our Services</string>
     <string name="luxury_rooms">Luxury Rooms &amp; Suites</string>
-    <string name="sea_view">Sea View &amp; Balcony Options</string>
+    <string name="sea_view">Nature View &amp; Balcony Options</string>
     <string name="wifi_amenities">WiFi &amp; Premium Amenities</string>
     <string name="room_service">24/7 Room Service</string>
     <string name="pet_friendly">Pet-Friendly Accommodations</string>
 
-    <string name="footer_copyright">&#169; 2024 SunMoon Resorts. All rights reserved. | Owned &amp; Operated by Mr. Bhanu Pratap</string>
+    <string name="footer_copyright">&#169; 2026 SunMoon Resorts. All rights reserved. | Owned &amp; Operated by Mr. Bhanu Pratap</string>
     <string name="footer_tagline">Crafting Memories, Creating Comfort | Excellence in Hospitality</string>
 
     <!-- Booking Page -->
@@ -96,10 +96,10 @@
     <string name="confirm_booking">Confirm Booking</string>
     <string name="booking_confirmed">Booking Confirmed!</string>
     <string name="spa_sessions">Spa Sessions</string>
-    <string name="extra_mattress_label">Extra Mattress (Rs 500/day)</string>
-    <string name="extra_spa_label">SPA</string>
-    <string name="extra_gym_label">Gym Access (Rs 500/day)</string>
-    <string name="extra_pool_label">Pool Access (Rs 500/day)</string>
+    <string name="extra_mattress_label">Extra Mattress (Rs 250/day)</string>
+    <string name="extra_spa_label">SPA (Rs 1200/session)</string>
+    <string name="extra_gym_label">Gym Access (Rs 200/day)</string>
+    <string name="extra_pool_label">Pool Access (Rs 300/day)</string>
     <string name="error">Error</string>
 
     <!-- Admin Panel Strings -->
@@ -131,10 +131,10 @@
 
     <!-- Invoice / Bill Dialog -->
     <string name="invoice_subtitle">Luxury Accommodation &amp; Hospitality</string>
-    <string name="resort_address_line_1">Coastal Paradise Zone</string>
-    <string name="resort_address_line_2">Beachfront Avenue, 123</string>
-    <string name="resort_address_line_3">Coastal City, CC 12345</string>
-    <string name="gst_number">GST Number: GYHFFY67567GHFGHG445H</string>
+    <string name="resort_address_line_1">Valleyfront Avenue, 001</string>
+    <string name="resort_address_line_2">Patratu Valley</string>
+    <string name="resort_address_line_3">Ranchi, Jharkhand</string>
+    <string name="gst_number">GST Number: GYHFFY67567LHFGHK445H</string>
     <string name="billing_date_label">Billing Date:</string>
     <string name="guest_information">GUEST INFORMATION</string>
     <string name="guest_name_label">Guest Name:</string>
