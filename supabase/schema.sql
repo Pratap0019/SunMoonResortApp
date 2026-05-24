@@ -8,8 +8,8 @@ create table if not exists public.bookings (
   guest_name text not null,
   contact_number text not null,
   days_stayed integer not null check (days_stayed > 0),
-  check_in_date text not null,
-  check_out_date text not null,
+  check_in_date date not null,
+  check_out_date date not null,
   status text not null check (status in ('CONFIRMED', 'CHECKED_IN', 'CHECKED_OUT', 'CANCELLED')),
   total_amount numeric(12,2) not null check (total_amount >= 0),
   created_at timestamptz not null default now(),
@@ -60,6 +60,11 @@ alter table public.booking_breakdown_items enable row level security;
 -- 5) Concurrency protection: prevent active-booking overlap on same room.
 create extension if not exists btree_gist;
 
+-- Ensure existing installations use DATE typed columns (required for immutable index expression).
+alter table public.bookings
+  alter column check_in_date type date using check_in_date::date,
+  alter column check_out_date type date using check_out_date::date;
+
 alter table public.bookings
   drop constraint if exists bookings_no_overlap_per_room;
 
@@ -67,19 +72,23 @@ alter table public.bookings
   add constraint bookings_no_overlap_per_room
   exclude using gist (
     room_number with =,
-    daterange(check_in_date::date, check_out_date::date, '[)') with &&
+    daterange(check_in_date, check_out_date, '[)') with &&
   )
   where (status in ('CONFIRMED', 'CHECKED_IN'));
 
 -- 6) Atomic room confirmation RPC (single transaction).
+drop function if exists public.confirm_booking_atomic(
+  text, integer, text, text, integer, text, text, text, numeric, jsonb
+);
+
 create or replace function public.confirm_booking_atomic(
   booking_id text,
   room_number integer,
   guest_name text,
   contact_number text,
   days_stayed integer,
-  check_in_date text,
-  check_out_date text,
+  check_in_date date,
+  check_out_date date,
   status text,
   total_amount numeric,
   breakdown_items jsonb default '[]'::jsonb
@@ -104,8 +113,8 @@ begin
     from public.bookings b
     where b.room_number = confirm_booking_atomic.room_number
       and b.status in ('CONFIRMED', 'CHECKED_IN')
-      and daterange(b.check_in_date::date, b.check_out_date::date, '[)')
-          && daterange(confirm_booking_atomic.check_in_date::date, confirm_booking_atomic.check_out_date::date, '[)')
+      and daterange(b.check_in_date, b.check_out_date, '[)')
+          && daterange(confirm_booking_atomic.check_in_date, confirm_booking_atomic.check_out_date, '[)')
   ) into has_conflict;
 
   if has_conflict then
@@ -158,7 +167,7 @@ end;
 $$;
 
 grant execute on function public.confirm_booking_atomic(
-  text, integer, text, text, integer, text, text, text, numeric, jsonb
+  text, integer, text, text, integer, date, date, text, numeric, jsonb
 ) to anon;
 
 -- WARNING: This allows any client with anon key to read/write all rows.
