@@ -340,7 +340,7 @@
                             android:textSize="10sp" />
                     </LinearLayout>
 
-                    <!-- Extras Section -->
+                    <!-- Extras Section (Checkboxes) -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -361,8 +361,8 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
 
-                            <RadioButton
-                                android:id="@+id/extra_mattress_radio"
+                            <CheckBox
+                                android:id="@+id/extra_mattress_checkbox"
                                 android:layout_width="wrap_content"
                                 android:layout_height="36dp"
                                 android:layout_marginBottom="2dp"
@@ -377,8 +377,8 @@
                                 android:gravity="center_vertical"
                                 android:orientation="horizontal">
 
-                                <RadioButton
-                                    android:id="@+id/extra_spa_radio"
+                                <CheckBox
+                                    android:id="@+id/extra_spa_checkbox"
                                     android:layout_width="wrap_content"
                                     android:layout_height="36dp"
                                     android:layout_weight="1"
@@ -412,8 +412,8 @@
                                 </com.google.android.material.textfield.TextInputLayout>
                             </LinearLayout>
 
-                            <RadioButton
-                                android:id="@+id/extra_gym_radio"
+                            <CheckBox
+                                android:id="@+id/extra_gym_checkbox"
                                 android:layout_width="wrap_content"
                                 android:layout_height="36dp"
                                 android:layout_marginBottom="2dp"
@@ -421,8 +421,8 @@
                                 android:textColor="@color/text_dark"
                                 android:textSize="12sp" />
 
-                            <RadioButton
-                                android:id="@+id/extra_pool_radio"
+                            <CheckBox
+                                android:id="@+id/extra_pool_checkbox"
                                 android:layout_width="wrap_content"
                                 android:layout_height="36dp"
                                 android:text="@string/extra_pool_label"

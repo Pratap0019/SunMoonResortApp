@@ -155,19 +155,20 @@ class BookingActivity : AppCompatActivity() {
     }
 
     private fun setupExtrasSelection() {
-        binding.extraMattressRadio.setOnCheckedChangeListener { _, isChecked ->
+        // Extras are independent checkboxes, so each option can be selected/unselected.
+        binding.extraMattressCheckbox.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) selectedExtras.add(Extras.MATTRESS) else selectedExtras.remove(Extras.MATTRESS)
         }
 
-        binding.extraGymRadio.setOnCheckedChangeListener { _, isChecked ->
+        binding.extraGymCheckbox.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) selectedExtras.add(Extras.GymPASS) else selectedExtras.remove(Extras.GymPASS)
         }
 
-        binding.extraPoolRadio.setOnCheckedChangeListener { _, isChecked ->
+        binding.extraPoolCheckbox.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) selectedExtras.add(Extras.PoolPASS) else selectedExtras.remove(Extras.PoolPASS)
         }
 
-        binding.extraSpaRadio.setOnCheckedChangeListener { _, isChecked ->
+        binding.extraSpaCheckbox.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 selectedExtras.add(Extras.SPA)
                 binding.spaSessionsContainer.isEnabled = true
