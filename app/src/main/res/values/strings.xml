@@ -69,7 +69,7 @@
     <string name="room_service">24/7 Room Service</string>
     <string name="pet_friendly">Pet-Friendly Accommodations</string>
 
-    <string name="footer_copyright">&#169; 2026 SunMoon Resorts. All rights reserved. | Owned &amp; Operated by Mr. Bhanu Pratap</string>
+    <string name="footer_copyright">&#169; 2026 SunMoon Resorts. All rights reserved. | Owned &amp; Operated by \nMr. Bhanu Pratap</string>
     <string name="footer_tagline">Crafting Memories, Creating Comfort | Excellence in Hospitality</string>
 
     <!-- Booking Page -->
