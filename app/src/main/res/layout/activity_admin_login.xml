@@ -76,8 +76,8 @@
                 android:layout_height="80dp"
                 android:layout_marginBottom="32dp"
                 android:contentDescription="@string/logo_description"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/ic_launcher_foreground"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/ic_admin_panel"
                 app:tint="@color/resort_gold" />
 
             <!-- Title -->
