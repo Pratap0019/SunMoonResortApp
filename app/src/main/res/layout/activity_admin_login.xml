@@ -145,7 +145,7 @@
             <!-- Login Button -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/login_button"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="56dp"
                 android:letterSpacing="0.05"
                 android:text="@string/login"

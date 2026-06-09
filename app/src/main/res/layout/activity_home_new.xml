@@ -162,10 +162,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="12dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="10dp"
             android:orientation="vertical">
 
             <!-- Room Availability Card -->
@@ -214,51 +214,51 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.8"
+                            android:ellipsize="end"
+                            android:includeFontPadding="false"
+                            android:maxLines="1"
                             android:text="@string/room_type"
                             android:textColor="@color/white"
                             android:textSize="11sp"
-                            android:maxLines="1"
-                            android:ellipsize="end"
-                            android:includeFontPadding="false"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.9"
+                            android:ellipsize="end"
                             android:gravity="center"
+                            android:includeFontPadding="false"
+                            android:maxLines="1"
                             android:text="@string/base_rate"
                             android:textColor="@color/white"
                             android:textSize="11sp"
-                            android:maxLines="1"
-                            android:ellipsize="end"
-                            android:includeFontPadding="false"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2.3"
+                            android:ellipsize="end"
                             android:gravity="center"
+                            android:includeFontPadding="false"
+                            android:maxLines="1"
                             android:text="@string/amenities"
                             android:textColor="@color/white"
                             android:textSize="11sp"
-                            android:maxLines="1"
-                            android:ellipsize="end"
-                            android:includeFontPadding="false"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1.1"
+                            android:ellipsize="end"
                             android:gravity="center"
+                            android:includeFontPadding="false"
+                            android:maxLines="1"
                             android:text="@string/available_rooms"
                             android:textColor="@color/white"
                             android:textSize="11sp"
-                            android:maxLines="1"
-                            android:ellipsize="end"
-                            android:includeFontPadding="false"
                             android:textStyle="bold" />
                     </LinearLayout>
 

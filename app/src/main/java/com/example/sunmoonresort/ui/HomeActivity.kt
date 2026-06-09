@@ -83,7 +83,7 @@ class HomeActivity : AppCompatActivity() {
             CarouselSlide(
                 imageResId = R.drawable.carousal2,
                 title = "Luxurious Rooms",
-                description = "Relax in our elegantly designed rooms with sea view options",
+                description = "Relax in our elegantly designed rooms with nature view options",
                 ctaText = "View Rooms",
                 onCtaClick = { startActivity(Intent(this, BookingActivity::class.java)) }
             ),
