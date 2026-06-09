@@ -142,9 +142,9 @@
             android:background="@color/resort_gold" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="6dp"
+            android:layout_marginBottom="3dp"
             android:gravity="center"
             android:text="@string/footer_copyright"
             android:textColor="@color/text_brown"

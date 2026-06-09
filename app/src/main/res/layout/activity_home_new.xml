@@ -86,19 +86,19 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="3dp"
-                android:layout_marginEnd="12dp"
+                android:layout_marginEnd="5dp"
                 app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="4dp">
+                app:cardCornerRadius="15dp"
+                app:cardElevation="20dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:orientation="vertical"
-                    android:padding="5dp">
+                    android:padding="3dp">
 
                     <TextView
                         style="@style/TextSunMoonResortHeading"
@@ -127,8 +127,7 @@
                         android:layout_marginTop="3dp"
                         android:contentDescription="@string/owner_desc"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/owner_photo"
-                        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlaySunMoonResortRoundedImage" />
+                        android:src="@drawable/owner_photo" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -143,7 +142,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="3dp"
             android:orientation="vertical">
 
             <androidx.viewpager2.widget.ViewPager2
@@ -187,7 +186,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:background="@color/text_dark"
-                        android:gravity="center_vertical"
+                        android:gravity="center"
                         android:orientation="horizontal"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp">
@@ -292,7 +291,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:background="@color/text_dark"
-                        android:gravity="center_vertical"
+                        android:gravity="center"
                         android:orientation="horizontal"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp">
@@ -429,7 +428,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:background="@color/text_dark"
-                        android:gravity="center_vertical"
+                        android:gravity="center"
                         android:orientation="horizontal"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp">
